@@ -1,0 +1,78 @@
+{
+  "name": "@SalesforceCommerceCloud/b2c-tools",
+  "version": "0.1.0",
+  "description": "SFCC Data Tools",
+  "license": "UNLICENSED",
+  "main": "./lib/index.js",
+  "types": "./types/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SalesforceCommerceCloud/b2c-tools.git"
+  },
+  "publishConfig": {
+    "@SalesforceCommerceCloud:registry": "https://npm.pkg.github.com"
+  },
+  "engines": {
+    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
+  },
+  "bin": {
+    "b2c-tools": "./cli.js"
+  },
+  "scripts": {
+    "test": "jest",
+    "test:unit": "jest",
+    "coverage": "npm test -- --coverage",
+    "build": "tsc -p tsconfig.json",
+    "lint": "eslint '*/**/*.{js,ts,tsx}'",
+    "prepublishOnly": "npm run build",
+    "docs": "documentation build lib/index.js --resolve node -f md --github -o ./docs/RAWAPI.md"
+  },
+  "files": [
+    "lib/",
+    "types/",
+    "README.md",
+    "package.json",
+    "cli.js"
+  ],
+  "keywords": [],
+  "author": "Charles Lavery <clavery@salesforce.com>",
+  "devDependencies": {
+    "@types/node": "17.0.4",
+    "axios-mock-adapter": "1.19.0",
+    "documentation": "13.2.5",
+    "eslint": "7.32.0",
+    "jest": "27.4.5",
+    "typescript": "4.5.4"
+  },
+  "dependencies": {
+    "adm-zip": "0.5.9",
+    "archiver": "5.3.0",
+    "axios": "0.24.0",
+    "chokidar": "3.5.2",
+    "fs-extra": "10.0.0",
+    "glob": "7.1.7",
+    "handlebars": "4.7.7",
+    "inquirer": "8.1.2",
+    "open": "8.2.1",
+    "winston": "3.3.3",
+    "xml2js": "0.4.23",
+    "yargs": "17.2.1"
+  },
+  "jest": {
+    "verbose": true,
+    "coverageReporters": [
+      "json-summary",
+      "text",
+      "lcov"
+    ],
+    "collectCoverageFrom": [
+      "lib/*.js"
+    ]
+  },
+  "b2c-tools": {
+    "library": "RefArchSharedLibrary",
+    "asset-query": [
+      "image.path"
+    ]
+  }
+}
