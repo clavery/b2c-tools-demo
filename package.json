@@ -1,0 +1,14 @@
+{
+  "name": "b2c-tools-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@SalesforceCommerceCloud/b2c-tools": "link:./dependencies/b2c-tools"
+  },
+  "author": "",
+  "license": "ISC"
+}
