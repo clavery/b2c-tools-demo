@@ -196,47 +196,18 @@ async function updateInstanceMetadata(env, lifeCycleModule) {
         }
     }
 
-    const currentClientID = env.clientID;
-    logger.info(`Checking ocapi permissions for clientID ${currentClientID}`);
-    const archive = await siteArchiveExportText(env, {
-        global_data: {
-            ocapi_settings: true
-        }
-    });
-    archive.delete('ocapi-settings/wapi_shop_config.json');
-    var dataAPIConfig = JSON.parse(archive.get('ocapi-settings/wapi_data_config.json'));
-    var currentConfig = dataAPIConfig.clients.find((config) => config.client_id === currentClientID);
-    var globalPrefsResource = currentConfig.resources.find((r) => r.resource_id === '/global_preferences/preference_groups/b2cToolkit/development');
-
-    if (!globalPrefsResource) {
-        logger.warn(`Updating OCAPI permissions for ${currentClientID} to include global preference group`);
-        currentConfig.resources.push({
-            'methods': [
-                'get',
-                'patch'
-            ],
-            'read_attributes': '(**)',
-            'resource_id': '/global_preferences/preference_groups/b2cToolkit/development',
-            'write_attributes': '(**)'
-        });
-        archive.set('ocapi-settings/wapi_data_config.json', JSON.stringify(dataAPIConfig, null, 2));
-        await siteArchiveImportText(env, archive);
-        var iterations = 1;
-        while (iterations < 60) {
-            logger.warn(`Waiting up to 2 minutes for permissions update (try #${iterations})...`);
-            try {
-                await env.ocapi.get('/global_preferences/preference_groups/b2cToolkit/development');
-                break;
-            } catch (e) {
-                if (e.response && e.response.status === 403) {
-                    await sleep(2000);
-                } else {
-                    throw e;
-                }
-            }
-            iterations++;
-        }
-    }
+    await ensureDataAPIPermissions(env, [{
+        'methods': [
+            'get',
+            'patch'
+        ],
+        'read_attributes': '(**)',
+        'resource_id': '/global_preferences/preference_groups/b2cToolkit/development',
+        'write_attributes': '(**)'
+    }], async () => {
+        await env.ocapi.get('/global_preferences/preference_groups/b2cToolkit/development');
+        return true;
+    })
 
     if (typeof lifeCycleModule.onBootstrap === 'function') {
         logger.info('Calling project onBootstrap...');
