@@ -10,6 +10,12 @@
                 <externally-managed-flag>false</externally-managed-flag>
             </attribute-definition>
         </custom-attribute-definitions>
+        <group-definitions>
+            <attribute-group group-id="TestDemoPrefs">
+                <display-name xml:lang="x-default">Test Demo Prefs</display-name>
+                <attribute attribute-id="testPreferenceForDemo"/>
+            </attribute-group>
+        </group-definitions>
     </type-extension>
 
 </metadata>

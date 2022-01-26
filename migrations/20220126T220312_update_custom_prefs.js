@@ -30,7 +30,7 @@ module.exports = async function ({env, logger, helpers}) {
         let sitePrefs = archive.get(`sites/${site.id}/preferences.xml`);
         delete sitePrefs.preferences["standard-preferences"]
 
-        for (let instanceGroup in ["all-instances", "development", "staging", "production"]) {
+        for (let instanceGroup of ["all-instances", "development", "staging", "production"]) {
             let group = sitePrefs.preferences["custom-preferences"][0][instanceGroup][0];
             // filter, extract and rename preference via xml2js
             if (group.preference) {
@@ -43,6 +43,7 @@ module.exports = async function ({env, logger, helpers}) {
         }
     }
 
+    logger.info("Importing new attribute");
     // import the new attribute as raw XML
     await siteArchiveImportText(env, new Map([
         ["meta/system-objecttype-extensions.xml", NEW_ATTR]
@@ -50,17 +51,16 @@ module.exports = async function ({env, logger, helpers}) {
 
     if (foundValue) {
         // copy existing values and modified ids over
+        logger.info("copying old values");
         await siteArchiveImportJSON(env, archive)
     }
 
     // delete the old attribute
-    try {
-        await env.ocapi.delete('system_object_definitions/SitePreferences/attribute_definitions/testPreferenceForDemo');
-    } catch(e) { /* ignore */ }
+    logger.info("deleting old attribute");
+    await env.ocapi.delete('system_object_definitions/SitePreferences/attribute_definitions/testPreferenceForDemo');
 }
 
-const NEW_ATTR = `
-<?xml version="1.0" encoding="UTF-8"?>
+const NEW_ATTR = `<?xml version="1.0" encoding="UTF-8"?>
 <metadata xmlns="http://www.demandware.com/xml/impex/metadata/2006-10-31">
     <type-extension type-id="SitePreferences">
         <custom-attribute-definitions>
@@ -72,7 +72,12 @@ const NEW_ATTR = `
                 <externally-managed-flag>false</externally-managed-flag>
             </attribute-definition>
         </custom-attribute-definitions>
+        <group-definitions>
+            <attribute-group group-id="TestDemoPrefs">
+                <display-name xml:lang="x-default">Test Demo Prefs</display-name>
+                <attribute attribute-id="testPreferenceForDemo2"/>
+            </attribute-group>
+        </group-definitions>
     </type-extension>
-
 </metadata>
 `;
