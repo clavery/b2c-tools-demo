@@ -1,0 +1,6 @@
+# Default ignored files
+misc.xml
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
