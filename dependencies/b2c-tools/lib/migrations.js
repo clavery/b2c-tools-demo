@@ -40,7 +40,7 @@ async function collectMigrations(dir, exclude = []) {
         })
         .filter((entry) => entry.name !== 'setup.js')
         .map((d) => d.name)
-        .sort((a, b) => a.localeCompare(b, 'en', { numeric: true }));
+        .sort((a, b) => a.localeCompare(b, 'en', { numeric: false }));
 }
 
 /**
