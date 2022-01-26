@@ -23,8 +23,11 @@ const {
     siteArchiveExport,
     siteArchiveExportJSON,
     siteArchiveExportText,
-    siteArchiveImportText, siteArchiveImportJSON
+    siteArchiveImportText,
+    siteArchiveImportJSON,
+    ensureDataAPIPermissions
 } = require('./jobs');
+const {sleep} = require("./util");
 
 module.exports = {
     version,
@@ -34,12 +37,14 @@ module.exports = {
 
     // jobs
     waitForJob,
+    sleep,
     siteArchiveImport,
     siteArchiveExport,
     siteArchiveExportJSON,
     siteArchiveImportJSON,
     siteArchiveExportText,
     siteArchiveImportText,
+    ensureDataAPIPermissions,
 
     commands: [exportCommand, importCommand, instanceCommand, syncCommand, tailCommand]
 };

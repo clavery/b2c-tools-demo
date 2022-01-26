@@ -12,6 +12,7 @@ const xml2js = require('xml2js');
 
 const logger = require('./logger');
 const util = require('./util');
+const {sleep} = require("./util");
 
 /**
  *
@@ -316,6 +317,105 @@ async function siteArchiveImportText(env, data) {
     return await siteArchiveImport(env, zip.toBuffer(), archiveDir)
 }
 
+/**
+ * @typedef {Object} ResourceDocument
+ * @property {string} resource_id
+ * @property {number} cache_time
+ * @property {string[]} methods
+ * @property {string} read_attributes
+ * @property {string} write_attributes
+ */
+
+/**
+ * This callback is displayed as part of the Requester class.
+ * @callback permissionValidatorCallback
+ * @returns {boolean} true if permission is validated
+ */
+
+/**
+ *
+ * @param {ResourceDocument} a
+ * @param {ResourceDocument} b
+ * @returns {boolean} true if the documents are trivially equal
+ */
+function compareResourceDocuments(a, b) {
+    return (
+        a.resource_id === b.resource_id
+        && (a.methods.length === b.methods.length && a.methods.every((v) => b.methods.includes(v)))
+        && (a.read_attributes === b.read_attributes)
+        && (a.write_attributes === b.write_attributes)
+    );
+}
+
+/**
+ * Ensures the environment has access to the given DATA API resources by adding or updating
+ * Resource Documents for the client ID.
+ *
+ * If changes are made `validator` will be called asynchronously until it returns true
+ *
+ * Note: this method only trivially compares resource identifiers, methods and read/write attributes. If all
+ * values are equal to the instance's state the resource will not be updated.
+ *
+ * @param {Environment} env
+ * @param {ResourceDocument[]} resources array of resources to add/update
+ * @param {permissionValidatorCallback} validator array of resources to add/update
+ * @param {number} [maximumChecks] maximum number of permission checks
+ * @return {Promise<void>}
+ */
+async function ensureDataAPIPermissions(env, resources = [], validator, maximumChecks=60) {
+    const currentClientID = env.clientID;
+    if (!resources.length) {
+        throw new Error("Resources must not be empty");
+    }
+
+    logger.info(`Ensuring DATA API permissions for clientID ${currentClientID}`);
+
+    const archive = await siteArchiveExportText(env, {
+        global_data: {
+            ocapi_settings: true
+        }
+    });
+
+    archive.delete('ocapi-settings/wapi_shop_config.json');
+    var dataAPIConfig = JSON.parse(archive.get('ocapi-settings/wapi_data_config.json'));
+
+    var currentConfig = dataAPIConfig.clients.find((config) => config.client_id === currentClientID);
+    var hasUpdatedAnything = false;
+
+    resources.forEach((resource) => {
+        let idx = currentConfig.resources.findIndex((r) => r.resource_id === resource.resource_id);
+        if (idx === -1) {
+            hasUpdatedAnything = true;
+            currentConfig.resources.push(resource);
+        } else if (!compareResourceDocuments(currentConfig.resources[idx], resource)) { // update
+            hasUpdatedAnything = true;
+            currentConfig.resources[idx] = resource;
+        }
+    });
+
+    if (hasUpdatedAnything) {
+        archive.set('ocapi-settings/wapi_data_config.json', JSON.stringify(dataAPIConfig, null, 2));
+        await siteArchiveImportText(env, archive);
+
+        var iterations = 1;
+        while (iterations <= maximumChecks) {
+            logger.warn(`Checking for updated permissions (try ${iterations} / ${maximumChecks})...`);
+            try {
+                var checkResult = await validator();
+                if (checkResult) {
+                    break;
+                }
+            } catch (e) {
+                // ignore
+            }
+            await sleep(2000);
+            iterations++;
+        }
+    } else {
+        logger.info('No permissions update required');
+    }
+}
+
 module.exports = {
     waitForJob,
     siteArchiveExportText,
@@ -323,5 +423,6 @@ module.exports = {
     siteArchiveImport,
     siteArchiveExport,
     siteArchiveExportJSON,
-    siteArchiveImportJSON
+    siteArchiveImportJSON,
+    ensureDataAPIPermissions
 }

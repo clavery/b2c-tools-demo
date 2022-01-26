@@ -31,6 +31,7 @@ export namespace B2C_MIGRATION_HELPERS {
     export { siteArchiveExportJSON };
     export { siteArchiveImportText };
     export { siteArchiveExportText };
+    export { ensureDataAPIPermissions };
     export { sleep };
 }
 /**
@@ -60,5 +61,6 @@ import { siteArchiveImportJSON } from "./jobs";
 import { siteArchiveExportJSON } from "./jobs";
 import { siteArchiveImportText } from "./jobs";
 import { siteArchiveExportText } from "./jobs";
+import { ensureDataAPIPermissions } from "./jobs";
 import { sleep } from "./util";
 //# sourceMappingURL=migrations.d.ts.map

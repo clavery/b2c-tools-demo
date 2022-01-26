@@ -47,19 +47,15 @@ export namespace CONFIRM_YES {
     const _default_1: boolean;
     export { _default_1 as default };
 }
-export namespace DW_JSON_CONFIG_NAME {
-    const name_6: string;
-    export { name_6 as name };
-    const message_6: string;
-    export { message_6 as message };
-    const type_2: string;
-    export { type_2 as type };
-    export function choices(): {
+export function DW_JSON_CONFIG_NAME(configFile: any): {
+    name: string;
+    message: string;
+    type: string;
+    choices: () => {
         name: string;
         value: string;
         short: string;
     }[];
-    export function validate_4(v: any): any;
-    export { validate_4 as validate };
-}
+    validate: (v: any) => any;
+};
 //# sourceMappingURL=questions.d.ts.map
