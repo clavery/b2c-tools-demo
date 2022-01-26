@@ -7,8 +7,16 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@SalesforceCommerceCloud/b2c-tools": "link:./dependencies/b2c-tools"
+    "@SalesforceCommerceCloud/b2c-tools": "file:./dependencies/b2c-tools"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "b2c-tools": {
+    "defaultClientId": "885a4e1a-c48f-499d-813d-541f04fa517d",
+    "library": "NTO-SiteSharedLibrary",
+    "exclude-migrations": [
+      "^example_.*",
+      "^_.*"
+    ]
+  }
 }
