@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<library xmlns="http://www.demandware.com/xml/impex/library/2006-10-31" library-id="NTO-SiteSharedLibrary">
+  <content content-id="699c23b0612da513d893462bbb">
+    <display-name xml:lang="x-default">1 Column Component</display-name>
+    <type>component.layouts.1_column</type>
+    <config>{
+  "visibility" : [ ]
+}</config>
+    <data xml:lang="x-default">{
+  "border" : null,
+  "hideGutters" : false,
+  "backgroundColor" : null,
+  "spacing" : {
+    "active" : "lg",
+    "lg" : {
+      "margin" : {
+        "top" : "",
+        "right" : "",
+        "bottom" : "",
+        "left" : ""
+      },
+      "padding" : {
+        "top" : "",
+        "right" : "",
+        "bottom" : "",
+        "left" : ""
+      }
+    },
+    "md" : {
+      "margin" : {
+        "top" : "",
+        "right" : "",
+        "bottom" : "",
+        "left" : ""
+      },
+      "padding" : {
+        "top" : "",
+        "right" : "",
+        "bottom" : "",
+        "left" : ""
+      }
+    },
+    "sm" : {
+      "margin" : {
+        "top" : "",
+        "right" : "",
+        "bottom" : "",
+        "left" : ""
+      },
+      "padding" : {
+        "top" : "",
+        "right" : "",
+        "bottom" : "",
+        "left" : ""
+      }
+    },
+    "xs" : {
+      "margin" : {
+        "top" : "",
+        "right" : "",
+        "bottom" : "",
+        "left" : ""
+      },
+      "padding" : {
+        "top" : "",
+        "right" : "",
+        "bottom" : "",
+        "left" : ""
+      }
+    }
+  },
+  "alignment" : {
+    "active" : "xs",
+    "lg" : {
+      "direction" : "row",
+      "horizontal" : "center",
+      "vertical" : "start"
+    },
+    "md" : {
+      "direction" : "row",
+      "horizontal" : "center",
+      "vertical" : "start"
+    },
+    "sm" : {
+      "direction" : "row",
+      "horizontal" : "center",
+      "vertical" : "start"
+    },
+    "xs" : {
+      "direction" : "row",
+      "horizontal" : "center",
+      "vertical" : "start"
+    }
+  },
+  "column1Width" : {
+    "active" : "md",
+    "lg" : "6",
+    "md" : "8",
+    "sm" : "10",
+    "xs" : "10"
+  },
+  "isFullWidth" : false
+}</data>
+    <online-flag>true</online-flag>
+    <online-flag site-id="nto">true</online-flag>
+    <page-attributes/>
+    <content-links>
+      <content-link content-id="72fc44bd153ccbb15aa0c0b739" type="component.layouts.1_column.column1">
+        <position>0.0</position>
+      </content-link>
+    </content-links>
+  </content>
+  <content content-id="72fc44bd153ccbb15aa0c0b739">
+    <display-name xml:lang="x-default">Markup Component</display-name>
+    <type>component.assets.markup</type>
+    <config>{
+  "visibility" : [ ]
+}</config>
+    <data xml:lang="x-default">{
+  "border" : null,
+  "backgroundColor" : null,
+  "spacing" : {
+    "active" : "lg",
+    "lg" : {
+      "margin" : {
+        "top" : "",
+        "right" : "",
+        "bottom" : "",
+        "left" : ""
+      },
+      "padding" : {
+        "top" : "",
+        "right" : "",
+        "bottom" : "",
+        "left" : ""
+      }
+    },
+    "md" : {
+      "margin" : {
+        "top" : "",
+        "right" : "",
+        "bottom" : "",
+        "left" : ""
+      },
+      "padding" : {
+        "top" : "",
+        "right" : "",
+        "bottom" : "",
+        "left" : ""
+      }
+    },
+    "sm" : {
+      "margin" : {
+        "top" : "",
+        "right" : "",
+        "bottom" : "",
+        "left" : ""
+      },
+      "padding" : {
+        "top" : "",
+        "right" : "",
+        "bottom" : "",
+        "left" : ""
+      }
+    },
+    "xs" : {
+      "margin" : {
+        "top" : "",
+        "right" : "",
+        "bottom" : "",
+        "left" : ""
+      },
+      "padding" : {
+        "top" : "",
+        "right" : "",
+        "bottom" : "",
+        "left" : ""
+      }
+    }
+  },
+  "markup" : {
+    "content" : "&lt;p style=\"line-height: 1.6em; margin: 1em 0px; color: #333333; font-family: Arial, sans-serif; font-size: 13.2px; background-color: #ffffff;\"&gt;If you have any question or need help with your account, you may Contact Us&amp;nbsp;to assist you.&lt;/p&gt;\n&lt;p style=\"line-height: 1.6em; margin: 1em 0px; color: #333333; font-family: Arial, sans-serif; font-size: 13.2px; background-color: #ffffff;\"&gt;Customer Service&lt;br /&gt;Monday to Friday&lt;br /&gt;8 AM to 8 PM&lt;br /&gt;1 (800) 555 0199&lt;/p&gt;"
+  },
+  "link" : null
+}</data>
+    <online-flag>true</online-flag>
+    <online-flag site-id="nto">true</online-flag>
+    <page-attributes/>
+  </content>
+  <content content-id="98db6564b875d088e98a6fdfa0">
+    <display-name xml:lang="x-default">Section Header Component</display-name>
+    <type>component.assets.sectionHeader</type>
+    <config>{
+  "visibility" : [ ]
+}</config>
+    <data xml:lang="x-default">{
+  "showDesignElement" : false,
+  "spacing" : {
+    "active" : "lg",
+    "lg" : {
+      "margin" : {
+        "top" : "",
+        "right" : "",
+        "bottom" : "",
+        "left" : ""
+      },
+      "padding" : {
+        "top" : "",
+        "right" : "",
+        "bottom" : "",
+        "left" : ""
+      }
+    },
+    "md" : {
+      "margin" : {
+        "top" : "",
+        "right" : "",
+        "bottom" : "",
+        "left" : ""
+      },
+      "padding" : {
+        "top" : "",
+        "right" : "",
+        "bottom" : "",
+        "left" : ""
+      }
+    },
+    "sm" : {
+      "margin" : {
+        "top" : "",
+        "right" : "",
+        "bottom" : "",
+        "left" : ""
+      },
+      "padding" : {
+        "top" : "",
+        "right" : "",
+        "bottom" : "",
+        "left" : ""
+      }
+    },
+    "xs" : {
+      "margin" : {
+        "top" : "",
+        "right" : "",
+        "bottom" : "",
+        "left" : ""
+      },
+      "padding" : {
+        "top" : "",
+        "right" : "",
+        "bottom" : "",
+        "left" : ""
+      }
+    }
+  },
+  "headingColor" : null,
+  "heading" : "Contact NTO",
+  "subheadingColor" : null,
+  "subheading" : null
+}</data>
+    <online-flag>true</online-flag>
+    <online-flag site-id="nto">true</online-flag>
+    <page-attributes/>
+  </content>
+  <content content-id="contact">
+    <display-name xml:lang="x-default">Contact Us</display-name>
+    <description xml:lang="x-default">If you have any question or need help with your account, you may Contact Us to assist you.
+
+Customer Service
+Monday to Friday
+8 AM to 8 PM
+1 (800) 555 0199</description>
+    <type>page.generic</type>
+    <config>{
+  "visibility" : [ ]
+}</config>
+    <visibility-mode xml:lang="x-default">visible</visibility-mode>
+    <online-flag>true</online-flag>
+    <online-flag site-id="nto">true</online-flag>
+    <searchable-flag>true</searchable-flag>
+    <searchable-flag site-id="nto">true</searchable-flag>
+    <page-attributes>
+      <page-url xml:lang="x-default">contact</page-url>
+    </page-attributes>
+    <content-links>
+      <content-link content-id="98db6564b875d088e98a6fdfa0" type="page.generic.main">
+        <position>0.0</position>
+      </content-link>
+      <content-link content-id="699c23b0612da513d893462bbb" type="page.generic.main">
+        <position>1.0</position>
+      </content-link>
+    </content-links>
+    <sitemap-included-flag site-id="nto">false</sitemap-included-flag>
+  </content>
+</library>

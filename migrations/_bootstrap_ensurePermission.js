@@ -50,5 +50,14 @@ const REQUIRED_RESOURCES = [
         ],
         'read_attributes': '(**)',
         'resource_id': '/inventory_lists'
-    }
+    },
+    {
+        'methods': [
+            'get',
+            'delete'
+        ],
+        'read_attributes': '(**)',
+        'write_attributes': '(**)',
+        'resource_id': '/system_object_definitions/**'
+    },
 ];
