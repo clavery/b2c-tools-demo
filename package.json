@@ -1,6 +1,6 @@
 {
   "name": "@SalesforceCommerceCloud/b2c-tools",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "SFCC Data Tools",
   "license": "UNLICENSED",
   "main": "./lib/index.js",
