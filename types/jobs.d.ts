@@ -83,6 +83,17 @@ export type ExportDataUnitsConfiguration = {
     };
     global_data: undefined | ExportGlobalDataConfiguration;
 };
+export type ResourceDocument = {
+    resource_id: string;
+    cache_time: number;
+    methods: string[];
+    read_attributes: string;
+    write_attributes: string;
+};
+/**
+ * This callback is displayed as part of the Requester class.
+ */
+export type permissionValidatorCallback = () => boolean;
 /**
  *
  * @param env {Environment}
@@ -224,5 +235,21 @@ export function siteArchiveExportJSON(env: Environment, dataUnits: ExportDataUni
  * @return {Promise<void>}
  */
 export function siteArchiveImportJSON(env: Environment, data: Map<string, object>): Promise<void>;
+/**
+ * Ensures the environment has access to the given DATA API resources by adding or updating
+ * Resource Documents for the client ID.
+ *
+ * If changes are made `validator` will be called asynchronously until it returns true
+ *
+ * Note: this method only trivially compares resource identifiers, methods and read/write attributes. If all
+ * values are equal to the instance's state the resource will not be updated.
+ *
+ * @param {Environment} env
+ * @param {ResourceDocument[]} resources array of resources to add/update
+ * @param {permissionValidatorCallback} validator array of resources to add/update
+ * @param {number} [maximumChecks] maximum number of permission checks
+ * @return {Promise<void>}
+ */
+export function ensureDataAPIPermissions(env: Environment, resources: ResourceDocument[], validator: permissionValidatorCallback, maximumChecks?: number): Promise<void>;
 import { Buffer } from "buffer";
 //# sourceMappingURL=jobs.d.ts.map
