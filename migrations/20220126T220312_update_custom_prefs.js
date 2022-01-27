@@ -14,8 +14,8 @@ var semver = require("semver");
 module.exports = async function ({env, logger, helpers}) {
     const {siteArchiveExportJSON, siteArchiveImportJSON, siteArchiveImportText} = helpers;
 
-    if (semver.gt('1.2.3', '4.5.6')) {
-        throw new Error("Invalid Version. Please upgrade to 0.0.1")
+    if (semver.lt(helpers.version, '0.1.4')) {
+        throw new Error(`Invalid Version. Please upgrade to b2c-tools >=0.1.4 (current: ${helpers.version})`)
     }
 
     logger.info("Exporting existing preferences for testPreferenceForDemo");
