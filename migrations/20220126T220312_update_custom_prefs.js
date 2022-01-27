@@ -1,15 +1,22 @@
+var semver = require("semver");
+
 /**
  * Contrived example to demonstrate various methods of interacting with an instance via migration script
  * Moves values from old custom pref to new one
  * Deletes old attribute
  *
- * @param {Environment} env
- * @param {Logger} logger
- * @param {MigrationHelpers} helpers
+ * @param {object} args
+ * @param {import('@SalesforceCommerceCloud/b2c-tools').Environment} args.env
+ * @param {import('@SalesforceCommerceCloud/b2c-tools').logger} args.logger
+ * @param {import('@SalesforceCommerceCloud/b2c-tools').B2C_MIGRATION_HELPERS} args.helpers
  * @return {Promise<void>}
  */
 module.exports = async function ({env, logger, helpers}) {
     const {siteArchiveExportJSON, siteArchiveImportJSON, siteArchiveImportText} = helpers;
+
+    if (semver.gt('1.2.3', '4.5.6')) {
+        throw new Error("Invalid Version. Please upgrade to 0.0.1")
+    }
 
     logger.info("Exporting existing preferences for testPreferenceForDemo");
 
