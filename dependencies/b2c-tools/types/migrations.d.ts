@@ -33,6 +33,10 @@ export namespace B2C_MIGRATION_HELPERS {
     export { siteArchiveExportText };
     export { ensureDataAPIPermissions };
     export { sleep };
+    export { runMigrationScript };
+    export { version };
+    export { CONFIG };
+    export { Environment };
 }
 /**
  * Inspects an instance and executes site impex imports and "migration scripts" from the
@@ -54,6 +58,7 @@ export function migrateInstance(env: Environment, dir: string, exclude?: string[
  * @return {Promise<boolean>}
  */
 export function runMigrationScript(env: Environment, target: string): Promise<boolean>;
+import Environment = require("./environment");
 import { waitForJob } from "./jobs";
 import { siteArchiveImport } from "./jobs";
 import { siteArchiveExport } from "./jobs";
@@ -63,4 +68,5 @@ import { siteArchiveImportText } from "./jobs";
 import { siteArchiveExportText } from "./jobs";
 import { ensureDataAPIPermissions } from "./jobs";
 import { sleep } from "./util";
+import { CONFIG } from "./config";
 //# sourceMappingURL=migrations.d.ts.map

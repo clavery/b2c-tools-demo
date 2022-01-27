@@ -21,6 +21,9 @@ const {
 } = require('./jobs');
 const logger = require('./logger');
 const { sleep } = require('./util');
+const {version} = require("../package.json");
+const {CONFIG} = require("./config");
+const Environment = require("./environment");
 
 const B2C_TOOLKIT_DATA_VERSION = 4;
 
@@ -55,7 +58,13 @@ const B2C_MIGRATION_HELPERS = {
     siteArchiveImportText,
     siteArchiveExportText,
     ensureDataAPIPermissions,
-    sleep
+    sleep,
+    runMigrationScript,
+
+    // expose core library elements
+    version,
+    CONFIG,
+    Environment,
 };
 
 
