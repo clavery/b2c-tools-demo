@@ -14,7 +14,7 @@ const {migrateInstance, runMigrationScript, B2C_MIGRATION_HELPERS} = require('./
 const exportCommand = require('./command-export');
 const importCommand = require('./command-import');
 const instanceCommand = require('./command-instance');
-const syncCommand = require('./command-sync');
+const codeCommand = require('./command-code');
 const tailCommand = require('./command-tail');
 
 const {
@@ -46,5 +46,5 @@ module.exports = {
     siteArchiveImportText,
     ensureDataAPIPermissions,
 
-    commands: [exportCommand, importCommand, instanceCommand, syncCommand, tailCommand]
+    commands: [exportCommand, importCommand, instanceCommand, codeCommand, tailCommand]
 };
