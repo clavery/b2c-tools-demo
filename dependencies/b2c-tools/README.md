@@ -14,7 +14,7 @@
 - Interactive [site export](#site-export) without logging into business manager
 - Page Designer [page export](#page-export) with sub-components and static asset download
 - [Extendable CLI](./docs/EXTENDING.md) and [API](./docs/API.md) for building new command line interfaces and tools
-- Misc tools for syncing cartridges, viewing logs, etc...
+- Misc tools for syncing and mirroring cartridges, viewing logs, etc...
 
 ## Installation
 
@@ -55,10 +55,10 @@ See `b2c-tools --help` for CLI parameters:
 b2c-tools <command>
 
 Commands:
+  b2c-tools code      manage code versions
   b2c-tools export    exports data from b2c instances
   b2c-tools import    manage data imports and migrations
   b2c-tools instance  project setup commands
-  b2c-tools sync      sync catridges and optional activate/reload code version
   b2c-tools tail      watch instance logs
 
 B2C Connection:
@@ -196,16 +196,27 @@ b2c-tools export page homepage --asset-query image.path mobileImage.path
 },
 ```
 
-### Cartridge Sync
+### Code Sync
 
-`sync` will syncronize cartridges (recursively) found in the current directory to the given code version.
+`code` subcommands will syncronize cartridges (recursively)
 
 ```shell
 # sync all cartridges found underneath the current directory
-b2c-tools sync
+b2c-tools code deploy
 
 # sync only the specified cartridges
-b2c-tools sync --cartridges app_storefront_base modules
+b2c-tools code deploy --cartridge app_storefront_base modules
+
+# download cartridges from the instance's code version to ./cartridges
+b2c-tools code download
+
+# download cartridges to ./tmp
+b2c-tools code download -o ./tmp
+
+# download cartridges to ./cartridges OR mirrored to the local cartridge location if found
+# i.e. this can be used to sync changes on the instance code version but not in the project
+# existing file permissions are maintained to avoid superfluous version control changes
+b2c-tools code download --mirror
 ```
 
 ### Log Tailing

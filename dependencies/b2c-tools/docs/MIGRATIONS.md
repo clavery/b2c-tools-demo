@@ -52,7 +52,10 @@ module.exports = {
      * specified. Projects can use this to provide additional setup, permissions or custom functionality
      * required by migration scripts or lifecycle methods.
      *
-     * @param {MigrationScriptArguments} args
+     * @param {object} args
+     * @param {import('@SalesforceCommerceCloud/b2c-tools').Environment} args.env
+     * @param {import('@SalesforceCommerceCloud/b2c-tools').logger} args.logger
+     * @param {import('@SalesforceCommerceCloud/b2c-tools').B2C_MIGRATION_HELPERS} args.helpers
      * @returns {Promise<void>}
      */
     onBootstrap: async function({env, logger, helpers}) {},

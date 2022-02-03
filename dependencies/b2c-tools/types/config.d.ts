@@ -10,6 +10,7 @@ export namespace CONFIG {
         const verify: any;
         const certificate: any;
         const passphrase: any;
+        const cartridges: any;
     }
 }
 export var cli: yargs.Argv<{
@@ -36,6 +37,8 @@ export var cli: yargs.Argv<{
     "client-secret": unknown;
 } & {
     "code-version": unknown;
+} & {
+    cartridge: (string | number)[];
 } & {
     config: string;
 }>;

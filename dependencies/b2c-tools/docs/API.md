@@ -194,7 +194,7 @@ Type: [Object][97]
 
 ## collectMigrations
 
-[lib/migrations.js:34-44][109]
+[lib/migrations.js:37-47][109]
 
 Find all migration directories and scripts; excluding those matching the given patterns
 
@@ -207,11 +207,11 @@ Returns **[Promise][106]<[Array][110]<[string][98]>>**
 
 ## MigrationHelpers
 
-[lib/migrations.js:49-59][111]
+[lib/migrations.js:52-68][111]
 
 ## MigrationScriptArguments
 
-[lib/migrations.js:144-162][112]
+[lib/migrations.js:153-171][112]
 
 Type: [Object][97]
 
@@ -223,7 +223,7 @@ Type: [Object][97]
 
 ## MigrationScriptCallback
 
-[lib/migrations.js:144-162][115]
+[lib/migrations.js:153-171][115]
 
 Type: [Function][116]
 
@@ -235,7 +235,7 @@ Returns **[Promise][106]<([boolean][99] | void)>**
 
 ## ToolkitInstanceState
 
-[lib/migrations.js:144-162][118]
+[lib/migrations.js:153-171][118]
 
 Type: [Object][97]
 
@@ -246,7 +246,7 @@ Type: [Object][97]
 
 ## OnBootstrapLifecycleFunction
 
-[lib/migrations.js:144-162][120]
+[lib/migrations.js:153-171][120]
 
 Type: [Function][116]
 
@@ -258,7 +258,7 @@ Returns **[Promise][106]\<void>**
 
 ## BeforeAllLifecycleFunction
 
-[lib/migrations.js:144-162][121]
+[lib/migrations.js:153-171][121]
 
 Type: [Function][116]
 
@@ -272,7 +272,7 @@ Returns **[Promise][106]\<void>**
 
 ## BeforeEachLifecycleFunction
 
-[lib/migrations.js:144-162][122]
+[lib/migrations.js:153-171][122]
 
 Type: [Function][116]
 
@@ -286,7 +286,7 @@ Returns **[Promise][106]<[boolean][99]>** return false to skip the current migra
 
 ## AfterEachLifecycleFunction
 
-[lib/migrations.js:144-162][123]
+[lib/migrations.js:153-171][123]
 
 Type: [Function][116]
 
@@ -300,7 +300,7 @@ Returns **[Promise][106]\<void>**
 
 ## AfterAllLifecycleFunction
 
-[lib/migrations.js:144-162][124]
+[lib/migrations.js:153-171][124]
 
 Type: [Function][116]
 
@@ -314,7 +314,7 @@ Returns **[Promise][106]\<void>**
 
 ## OnFailureLifecycleFunction
 
-[lib/migrations.js:144-162][125]
+[lib/migrations.js:153-171][125]
 
 Type: [Function][116]
 
@@ -328,7 +328,7 @@ Returns **[Promise][106]\<void>** re-raise exception or new exception to stop mi
 
 ## MigrationLifecycleFunctions
 
-[lib/migrations.js:144-162][127]
+[lib/migrations.js:153-171][127]
 
 Type: [Object][97]
 
@@ -343,7 +343,7 @@ Type: [Object][97]
 
 ## getInstanceState
 
-[lib/migrations.js:144-162][134]
+[lib/migrations.js:153-171][134]
 
 Get the instance state from global preferences
 
@@ -355,7 +355,7 @@ Returns **[Promise][106]<[ToolkitInstanceState][135]>**
 
 ## updateInstanceMetadata
 
-[lib/migrations.js:171-249][136]
+[lib/migrations.js:180-229][136]
 
 Imports the latest toolkit metadata
 
@@ -368,7 +368,7 @@ Returns **[Promise][106]\<void>**
 
 ## updateInstanceMigrations
 
-[lib/migrations.js:257-271][138]
+[lib/migrations.js:237-251][138]
 
 Updates instance with new migrations set
 
@@ -381,7 +381,7 @@ Returns **[Promise][106]\<void>**
 
 ## migrateInstance
 
-[lib/migrations.js:285-404][139]
+[lib/migrations.js:265-384][139]
 
 Inspects an instance and executes site impex imports and "migration scripts" from the
 given `dir`.
@@ -399,15 +399,15 @@ Returns **[Promise][106]\<void>**
 
 ## lifeCycleModule
 
-[lib/migrations.js:292-292][140]
+[lib/migrations.js:272-272][140]
 
 ## runMigrationScript
 
-[lib/migrations.js:355-355][141]
+[lib/migrations.js:335-335][141]
 
 ## runMigrationScript
 
-[lib/migrations.js:412-422][142]
+[lib/migrations.js:392-402][142]
 
 ### Parameters
 
@@ -767,7 +767,7 @@ Returns **[boolean][99]** true if the documents are trivially equal
 
 ## ensureDataAPIPermissions
 
-[lib/jobs.js:365-417][175]
+[lib/jobs.js:365-418][175]
 
 Ensures the environment has access to the given DATA API resources by adding or updating
 Resource Documents for the client ID.
@@ -988,7 +988,7 @@ Returns **[Promise][106]\<void>**
 
 [95]: #parameters-30
 
-[96]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/environment.js#L47-L59 "Source code on GitHub"
+[96]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/environment.js#L47-L59 "Source code on GitHub"
 
 [97]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
@@ -996,61 +996,61 @@ Returns **[Promise][106]\<void>**
 
 [99]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
 
-[100]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/environment.js#L74-L378 "Source code on GitHub"
+[100]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/environment.js#L74-L378 "Source code on GitHub"
 
 [101]: #environmentopts
 
-[102]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/environment.js#L117-L132 "Source code on GitHub"
+[102]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/environment.js#L117-L132 "Source code on GitHub"
 
-[103]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/environment.js#L139-L154 "Source code on GitHub"
+[103]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/environment.js#L139-L154 "Source code on GitHub"
 
-[104]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/environment.js#L161-L176 "Source code on GitHub"
+[104]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/environment.js#L161-L176 "Source code on GitHub"
 
-[105]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/environment.js#L373-L377 "Source code on GitHub"
+[105]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/environment.js#L373-L377 "Source code on GitHub"
 
 [106]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
 
-[107]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/environment.js#L311-L315 "Source code on GitHub"
+[107]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/environment.js#L311-L315 "Source code on GitHub"
 
 [108]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date
 
-[109]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/migrations.js#L34-L44 "Source code on GitHub"
+[109]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L37-L47 "Source code on GitHub"
 
 [110]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 
-[111]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/migrations.js#L49-L59 "Source code on GitHub"
+[111]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L52-L68 "Source code on GitHub"
 
-[112]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/migrations.js#L62-L67 "Source code on GitHub"
+[112]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L71-L76 "Source code on GitHub"
 
 [113]: #environment
 
 [114]: #migrationhelpers
 
-[115]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/migrations.js#L69-L74 "Source code on GitHub"
+[115]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L78-L83 "Source code on GitHub"
 
 [116]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
 
 [117]: #migrationscriptarguments
 
-[118]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/migrations.js#L76-L80 "Source code on GitHub"
+[118]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L85-L89 "Source code on GitHub"
 
 [119]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-[120]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/migrations.js#L82-L86 "Source code on GitHub"
+[120]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L91-L95 "Source code on GitHub"
 
-[121]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/migrations.js#L88-L94 "Source code on GitHub"
+[121]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L97-L103 "Source code on GitHub"
 
-[122]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/migrations.js#L96-L102 "Source code on GitHub"
+[122]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L105-L111 "Source code on GitHub"
 
-[123]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/migrations.js#L104-L110 "Source code on GitHub"
+[123]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L113-L119 "Source code on GitHub"
 
-[124]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/migrations.js#L112-L118 "Source code on GitHub"
+[124]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L121-L127 "Source code on GitHub"
 
-[125]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/migrations.js#L120-L126 "Source code on GitHub"
+[125]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L129-L135 "Source code on GitHub"
 
 [126]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error
 
-[127]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/migrations.js#L128-L136 "Source code on GitHub"
+[127]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L137-L145 "Source code on GitHub"
 
 [128]: #onbootstraplifecyclefunction
 
@@ -1064,90 +1064,90 @@ Returns **[Promise][106]\<void>**
 
 [133]: #onfailurelifecyclefunction
 
-[134]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/migrations.js#L144-L162 "Source code on GitHub"
+[134]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L153-L171 "Source code on GitHub"
 
 [135]: #toolkitinstancestate
 
-[136]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/migrations.js#L171-L249 "Source code on GitHub"
+[136]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L180-L229 "Source code on GitHub"
 
 [137]: #migrationlifecyclefunctions
 
-[138]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/migrations.js#L257-L271 "Source code on GitHub"
+[138]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L237-L251 "Source code on GitHub"
 
-[139]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/migrations.js#L285-L404 "Source code on GitHub"
+[139]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L265-L384 "Source code on GitHub"
 
-[140]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/migrations.js#L292-L292 "Source code on GitHub"
+[140]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L272-L272 "Source code on GitHub"
 
-[141]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/migrations.js#L355-L355 "Source code on GitHub"
+[141]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L335-L335 "Source code on GitHub"
 
-[142]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/migrations.js#L412-L422 "Source code on GitHub"
+[142]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L392-L402 "Source code on GitHub"
 
-[143]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/command-export.js#L23-L68 "Source code on GitHub"
+[143]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/command-export.js#L23-L68 "Source code on GitHub"
 
-[144]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/command-export.js#L181-L253 "Source code on GitHub"
+[144]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/command-export.js#L181-L253 "Source code on GitHub"
 
-[145]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/command-instance.js#L12-L15 "Source code on GitHub"
+[145]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/command-instance.js#L12-L15 "Source code on GitHub"
 
-[146]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/code.js#L11-L15 "Source code on GitHub"
+[146]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/code.js#L11-L15 "Source code on GitHub"
 
-[147]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/code.js#L22-L36 "Source code on GitHub"
+[147]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/code.js#L22-L36 "Source code on GitHub"
 
 [148]: #cartridgemapping
 
-[149]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/code.js#L44-L62 "Source code on GitHub"
+[149]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/code.js#L44-L62 "Source code on GitHub"
 
-[150]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/code.js#L72-L102 "Source code on GitHub"
+[150]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/code.js#L72-L102 "Source code on GitHub"
 
-[151]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/command-tail.js#L7-L11 "Source code on GitHub"
+[151]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/command-tail.js#L7-L11 "Source code on GitHub"
 
-[152]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/command-tail.js#L19-L42 "Source code on GitHub"
+[152]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/command-tail.js#L19-L42 "Source code on GitHub"
 
 [153]: #logfile
 
-[154]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/command-tail.js#L49-L104 "Source code on GitHub"
+[154]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/command-tail.js#L49-L104 "Source code on GitHub"
 
-[155]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/jobs.js#L6-L6 "Source code on GitHub"
+[155]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/jobs.js#L6-L6 "Source code on GitHub"
 
-[156]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/jobs.js#L24-L49 "Source code on GitHub"
+[156]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/jobs.js#L24-L49 "Source code on GitHub"
 
-[157]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/jobs.js#L59-L102 "Source code on GitHub"
+[157]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/jobs.js#L59-L102 "Source code on GitHub"
 
 [158]: https://nodejs.org/api/buffer.html
 
-[159]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/jobs.js#L104-L135 "Source code on GitHub"
+[159]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/jobs.js#L104-L135 "Source code on GitHub"
 
-[160]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/jobs.js#L137-L163 "Source code on GitHub"
+[160]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/jobs.js#L137-L163 "Source code on GitHub"
 
-[161]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/jobs.js#L165-L176 "Source code on GitHub"
+[161]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/jobs.js#L165-L176 "Source code on GitHub"
 
 [162]: #exportsitesconfiguration
 
 [163]: #exportglobaldataconfiguration
 
-[164]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/jobs.js#L186-L205 "Source code on GitHub"
+[164]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/jobs.js#L186-L205 "Source code on GitHub"
 
 [165]: #exportdataunitsconfiguration
 
-[166]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/jobs.js#L221-L235 "Source code on GitHub"
+[166]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/jobs.js#L221-L235 "Source code on GitHub"
 
 [167]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map
 
-[168]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/jobs.js#L244-L265 "Source code on GitHub"
+[168]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/jobs.js#L244-L265 "Source code on GitHub"
 
-[169]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/jobs.js#L279-L296 "Source code on GitHub"
+[169]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/jobs.js#L279-L296 "Source code on GitHub"
 
-[170]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/jobs.js#L305-L318 "Source code on GitHub"
+[170]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/jobs.js#L305-L318 "Source code on GitHub"
 
-[171]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/jobs.js#L320-L327 "Source code on GitHub"
+[171]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/jobs.js#L320-L327 "Source code on GitHub"
 
-[172]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/jobs.js#L329-L333 "Source code on GitHub"
+[172]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/jobs.js#L329-L333 "Source code on GitHub"
 
-[173]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/jobs.js#L341-L348 "Source code on GitHub"
+[173]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/jobs.js#L341-L348 "Source code on GitHub"
 
 [174]: #resourcedocument
 
-[175]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/jobs.js#L365-L417 "Source code on GitHub"
+[175]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/jobs.js#L365-L418 "Source code on GitHub"
 
 [176]: #permissionvalidatorcallback
 
-[177]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/e6f54d76550cac4d94ce58fdcb6e1796ab8e79c3/lib/util.js#L7-L9 "Source code on GitHub"
+[177]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/util.js#L7-L9 "Source code on GitHub"
