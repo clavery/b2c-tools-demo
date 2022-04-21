@@ -263,10 +263,10 @@ b2c-tools instance open
 
 - CLI Arguments (see `b2c-tools --help`)
   - ex: `b2c-tools --client-id 1234`
+- A `.env` file in the current working directory can specify environment variables as below
 - Environment Variables
   - ENV variables are prefixed with `SFCC_` and should match the name of a CLI argument
   - ex: `SFCC_CLIENT_ID=1234 b2c-tools`
-- A `.env` file in the current working directory can specify environment variables
 - A `dw.json` configuration file for instance-specific configuration (path can be changed with the `--config` option)
   - Multiple instance ("multi-config") is supported using the same format as [
     Intellij SFCC](https://smokeelow.visualstudio.com/Intellij%20SFCC/_wiki/wikis/intellij-sfcc.wiki/25/dw.json?anchor=multiple-connections). Instances can be selected using the `-i/--instance` option
@@ -334,7 +334,7 @@ authentication types.*
                 "path": "/impex",
                 "operations": [
                         "read_write"
-                ],
+                ]
               },
               {
                 "path": "/cartridges",

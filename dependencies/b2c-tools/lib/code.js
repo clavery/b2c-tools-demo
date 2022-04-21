@@ -17,12 +17,17 @@ const UNZIP_BODY = querystring.stringify({
 /**
  * Find Cartridges recursively in the working directory
  *
+ * @param {string} [directory] - directory search for cartridges
  * @return {CartridgeMapping[]}
  */
-function findCartridges() {
+function findCartridges(directory) {
+    if (!directory) {
+        directory = process.cwd();
+    }
     var projectFiles = glob.sync('.project', {
         matchBase: true,
-        ignore: '**/node_modules/**'
+        ignore: '**/node_modules/**',
+        cwd: directory
     });
     var cartridges = projectFiles.map(f => {
         var dirname = path.dirname(f);

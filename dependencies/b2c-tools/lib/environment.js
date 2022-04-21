@@ -19,6 +19,7 @@ const fs = require("fs");
 const OAUTH_LOCAL_PORT = process.env.SFCC_OAUTH_LOCAL_PORT ? parseInt(process.env.SFCC_OAUTH_LOCAL_PORT) : 8080;
 const OAUTH_REDIRECT_URL = 'http://localhost:' + OAUTH_LOCAL_PORT; // changing the uri requires to update the client_id settings in AM
 const ACCOUNT_MANAGER_HOST = process.env.SFCC_LOGIN_URL ? process.env.SFCC_LOGIN_URL : 'account.demandware.com';
+const SANDBOX_API_HOST = process.env.SFCC_SANDBOX_API_HOST ? process.env.SFCC_SANDBOX_API_HOST : 'admin.us01.dx.commercecloud.salesforce.com';
 const ACCOUNT_MANAGER_AUTH_PATH = '/dwsso/oauth2/authorize?client_id=%s&redirect_uri=%s&response_type=%s';
 
 function getOauth2RedirectHTML() {
@@ -92,6 +93,10 @@ class Environment {
          * @private
          */
         this._amClient = null;
+        /**
+         * @private
+         */
+        this._odsClient = null;
 
         let agentOptions = {
             rejectUnauthorized: this.verify !== false,
@@ -103,8 +108,8 @@ class Environment {
             }
         }
         this._httpsAgent = new https.Agent(agentOptions);
-        if (!this.server) {
-            throw new Error("No server found; Did you provide one or configured your dw.json file?");
+        if (!this.server && !this.clientID) {
+            throw new Error("No serve or clientID found; Have you configured your dw.json file?");
         }
         return this;
     }
@@ -151,6 +156,28 @@ class Environment {
         this._ocapiClient.interceptors.request.use((config) => this._requestInterceptor(config, true), (err) => Promise.reject(err))
         this._ocapiClient.interceptors.response.use(this._loggingResponseInterceptor.bind(this), (err) => this._loggingResponseInterceptor(null, err))
         return this._ocapiClient;
+    }
+
+    /**
+     * ODS scoped Axios Client
+     *
+     * @type {axios.AxiosInstance}
+     */
+    get ods() {
+        if (this._odsClient) {
+            return this._odsClient;
+        }
+        this._odsClient = axios.create({
+            baseURL: `https://${SANDBOX_API_HOST}/api/v1/`,
+            timeout: 60000, // 1 minute
+            maxContentLength: Infinity,
+            maxBodyLength: Infinity,
+            httpsAgent: this._httpsAgent
+        });
+        this._odsClient.interceptors.request.use(this._loggingRequestInterceptor.bind(this), (err) => Promise.reject(err))
+        this._odsClient.interceptors.request.use((config) => this._requestInterceptor(config, true), (err) => Promise.reject(err))
+        this._odsClient.interceptors.response.use(this._loggingResponseInterceptor.bind(this), (err) => this._loggingResponseInterceptor(null, err))
+        return this._odsClient;
     }
 
     /**

@@ -379,7 +379,7 @@ module.exports = {
                     describe: 'library is a site ID (private)',
                     default: false
                 })
-                .boolean('is-site')
+                .boolean('is-site-library')
                 .option('q', {
                     alias: 'asset-query',
                     describe: 'json paths for file extraction',
