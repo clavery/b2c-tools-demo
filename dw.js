@@ -2,15 +2,16 @@
 // when this is present prophet will ignore dw.json and instead load the configuration exported
 // when changing instances prophet needs to be reloaded (restart vscode or Developer: Reload Window
 var dwJson = {};
+var path = require("path");
 try {
     try {
         // try to load env vars from .env
-        require('dotenv').config();
+        require('dotenv').config({ override: true })
     } catch(e) { /* ignore not having dotenv */ }
 
     var dwJsonPath = process.env.SFCC_CONFIG ? process.env.SFCC_CONFIG : './dw.json';
     var instanceName = process.env.SFCC_INSTANCE;
-    dwJson = require(dwJsonPath);
+    dwJson = require(path.resolve(dwJsonPath));
     // if we have an array and the main config is not active (or has no active property)
     if (!instanceName || dwJson.name !== instanceName) {
         if (instanceName && Array.isArray(dwJson.configs)) {

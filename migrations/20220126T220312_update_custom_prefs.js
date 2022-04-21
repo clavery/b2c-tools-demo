@@ -1,7 +1,7 @@
 var semver = require("semver");
 
 /**
- * Contrived example to demonstrate various methods of interacting with an instance via migration script
+ * Super contrived example to demonstrate various methods of interacting with an instance via migration script
  * Moves values from old custom pref to new one
  * Deletes old attribute
  *
