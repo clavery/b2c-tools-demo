@@ -20,6 +20,7 @@
     ]
   },
   "dependencies": {
-    "semver": "^7.3.5"
+    "semver": "^7.3.5",
+    "axios": "^0.24.0"
   }
 }
