@@ -4,6 +4,7 @@
 const {cli, commands, logger} = require('@SalesforceCommerceCloud/b2c-tools');
 // optionally import individual commands
 // const exportCommand = require('b2c-tools/lib/command-export');
+require('dotenv').config({ override: true })
 
 // extend b2c-tools cli
 cli
