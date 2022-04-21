@@ -11,12 +11,6 @@ let ocapiMock;
 let env;
 
 describe('environment construction', () => {
-    it('should throw an exception on missing server', async () => {
-        expect(() => {
-            new Environment();
-        }).toThrow("server")
-    });
-
     it('should throw an exception on missing client ID', async () => {
         var env = new Environment({
             server: 'example.com'
