@@ -3,3 +3,6 @@ dw.json
 node_modules/
 tmp/
 .DS_Store
+SFCC_CONFIG=dw.json
+.env
+debug.log
