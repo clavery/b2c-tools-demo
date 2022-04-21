@@ -47,19 +47,6 @@ module.exports = {
             ["meta/system-objecttype-extensions.xml", PROJECT_METADATA],
             ["preferences.xml", prefs]
         ]))
-
-        await ensureDataAPIPermissions(env, [{
-            'resource_id': '/global_preferences/preference_groups/b2cDemoMetadata/development',
-            'methods': [
-                'get',
-                'patch'
-            ],
-            'read_attributes': '(**)',
-            'write_attributes': '(**)'
-        }], async () => {
-            await env.ocapi.get('global_preferences/preference_groups/b2cDemoMetadata/development');
-            return true;
-        })
     },
 
     /**
@@ -121,7 +108,7 @@ module.exports = {
                     });
                     logger.info("==== FINISHED IMPORTING DEV CATALOG ====")
                 } else {
-                    logger.info("no dev catalog update needed")
+                    logger.info("==== NO DEV CATALOG UPDATE NEEDED ====")
                 }
             }
         }
@@ -235,6 +222,15 @@ const REQUIRED_RESOURCES = [
         'write_attributes': '(**)',
         'resource_id': '/system_object_definitions/**'
     },
+    {
+        'resource_id': '/global_preferences/preference_groups/b2cDemoMetadata/development',
+        'methods': [
+            'get',
+            'patch'
+        ],
+        'read_attributes': '(**)',
+        'write_attributes': '(**)'
+    }
 ];
 
 
