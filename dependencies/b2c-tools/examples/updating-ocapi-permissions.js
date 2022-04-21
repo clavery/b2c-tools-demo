@@ -1,7 +1,7 @@
 /**
  * Example migration script for updating DATA API permissions using the helper
  *
- * Can be used standalone, as a migration, or during boostrap
+ * Can be used standalone, as a migration, or during bootstrap
  *
  * @param {Environment} env
  * @param {Logger} logger

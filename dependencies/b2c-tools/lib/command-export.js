@@ -171,14 +171,92 @@ async function exportPage(pageIds, library, outputPath, isSite, assetQuery = ['i
 }
 
 /**
+ * @typedef {Object} CollectionLists
+ * @property {string[]} sites
+ * @property {string[]} inventoryLists
+ * @property {string[]} catalogs
+ */
+
+/**
+ * Retrieves list of catalogs, inventory lists, sites and libraries for interactive display
+ *
+ * @param env {Environment}
+ * @return {Promise<CollectionLists>}
+ */
+async function getCollectionsFromInstance(env) {
+    var resp;
+    var sites = [];
+    var catalogs = [];
+    var inventoryLists = [];
+    try {
+        let retrieved = 0;
+        do {
+            resp = await env.ocapi.get(`sites?start=${retrieved}&count=100`);
+            if (resp.data.count) {
+                sites = sites.concat(resp.data.data.map((s) => s.id));
+                retrieved += resp.data.count;
+            }
+        } while(retrieved !== resp.data.total);
+    } catch (e) {
+        if (e.response && e.response.status === 403) {
+            logger.warn('Cannot query sites (check DATA API permissions)');
+        } else {
+            throw e;
+        }
+    }
+    try {
+        let retrieved = 0;
+        do {
+            resp = await env.ocapi.get(`catalogs?start=${retrieved}&count=100`);
+            if (resp.data.count) {
+                catalogs = catalogs.concat(resp.data.data.map((s) => s.id));
+                retrieved += resp.data.count;
+            }
+        } while(retrieved !== resp.data.total);
+    } catch (e) {
+        if (e.response && e.response.status === 403) {
+            logger.warn('Cannot query catalogs (check DATA API permissions)');
+        } else {
+            throw e;
+        }
+    }
+    try {
+        let retrieved = 0;
+        do {
+            resp = await env.ocapi.get(`inventory_lists?start=${retrieved}&count=100`);
+            if (resp.data.count) {
+                inventoryLists = inventoryLists.concat(resp.data.data.map((s) => s.id));
+                retrieved += resp.data.count;
+            }
+        } while(retrieved !== resp.data.total);
+    } catch (e) {
+        if (e.response && e.response.status === 403) {
+            logger.warn('Cannot query inventories (check DATA API permissions)');
+        } else {
+            throw e;
+        }
+    }
+
+    return {
+        sites,
+        inventoryLists,
+        catalogs
+    };
+}
+
+/**
  * Launch a web page to collect data units to export
  *
- * @param sites {string[]}
- * @param catalogs {string[]}
  * @param env {Environment}
+ * @param collections {CollectionLists}
  * @return {Promise<object>}
  */
-function getDataUnitsFromWeb(sites, catalogs, env) {
+function getDataUnitsFromWeb(env, collections) {
+    var {
+        sites,
+        inventoryLists,
+        catalogs
+    } = collections;
     return new Promise(function (resolve, _reject) {
         var sockets = [];
         var server = http.createServer(function (request, response) {
@@ -187,7 +265,12 @@ function getDataUnitsFromWeb(sites, catalogs, env) {
                 response.writeHead(200, { 'Content-Type': 'text/html' });
                 var tpl = Handlebars.compile(fs.readFileSync(path.resolve(__dirname, 'templates/export.html.hbs'))
                     .toString());
-                response.write(tpl({ sites, catalogs, env }));
+                response.write(tpl({
+                    sites,
+                    catalogs,
+                    inventoryLists,
+                    env
+                }));
                 response.end();
             } else {
                 // return access token
@@ -261,32 +344,10 @@ async function exportSiteCommand(outputPath) {
     var archiveDir = `${now}_export`;
     var zipFilename = `${archiveDir}.zip`;
 
-    logger.info('Querying sites...');
-    var resp;
-    var sites = [];
-    var catalogs = [];
-    try {
-        resp = await env.ocapi.get('sites');
-        sites = resp.data.data.map((s) => s.id);
-    } catch (e) {
-        if (e.response && e.response.status === 403) {
-            logger.warn('Cannot query sites (check DATA API permissions)');
-        } else {
-            throw e;
-        }
-    }
-    try {
-        resp = await env.ocapi.get('catalogs');
-        catalogs = resp.data.data.map((s) => s.id);
-    } catch (e) {
-        if (e.response && e.response.status === 403) {
-            logger.warn('Cannot query catalogs (check DATA API permissions)');
-        } else {
-            throw e;
-        }
-    }
+    logger.info('Querying sites, catalogs and inventory lists...');
 
-    var dataUnits = await getDataUnitsFromWeb(sites, catalogs, env);
+    var collections = await getCollectionsFromInstance(env)
+    var dataUnits = await getDataUnitsFromWeb(env, collections);
 
     if (dataUnits && dataUnits["cancel"]) {
         return;

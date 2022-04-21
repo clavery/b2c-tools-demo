@@ -9,14 +9,26 @@
 - A CLI and [extendable](./docs/EXTENDING.md) library that understands most common B2C configuration sources including [multiple instances](#configuration)
 - A data migration system for managing imports and migration "scripts" to B2C instances
     - see [Migrations](#Migrations) for usage and [docs/MIGRATIONS](docs/MIGRATIONS.md) for details
-- running [migration scripts](./docs/MIGRATIONS.md#migration-scripts) for automation of one-off or regular tasks
-- [Importing](#import-run) both impex archives (without uploading or zipping contents) and migration scripts
+- [Importing](#import-run) impex archives (without uploading or zipping contents) and running [migration scripts](./docs/MIGRATIONS.md#migration-scripts)
 - Interactive [site export](#site-export) without logging into business manager
 - Page Designer [page export](#page-export) with sub-components and static asset download
 - [Extendable CLI](./docs/EXTENDING.md) and [API](./docs/API.md) for building new command line interfaces and tools
-- Misc tools for syncing and mirroring cartridges, viewing logs, etc...
+- [Instance management](#instance-management)
+- Other miscellaneous tools for syncing/mirroring cartridges, tailing logs...
 
 ## Installation
+
+### From Repository
+
+The easiest way to install is directly via git:
+
+```shell
+git clone git@github.com:SalesforceCommerceCloud/b2c-tools
+cd b2c-tools
+npm install -g .
+```
+
+### NPM Package
 
 Since `b2c-tools` is a private package on github's registry you must configure a scoped registry in your project or 
 user `.npmrc` file and login with a github [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). For example:
@@ -39,14 +51,6 @@ npm install -g @SalesforceCommerceCloud/b2c-tools
 b2c-tools --help
 ```
 
-You can also install directly via github or via the package archive: https://github.com/SalesforceCommerceCloud/b2c-tools/packages/ without needing to configure personal access tokens.
-
-```shell
-git clone git@github.com:@SalesforceCommerceCloud/b2c-tools
-cd b2c-tools
-npm install -g .
-```
-
 ## Usage
 
 See `b2c-tools --help` for CLI parameters:
@@ -62,17 +66,22 @@ Commands:
   b2c-tools tail      watch instance logs
 
 B2C Connection:
-  -i, --instance       instance name in config file (multi-config)
-  -s, --server         b2c instance hostname
-  -u, --username       webdav username
-  -p, --password       password/webdav access key
-      --client-id      data API client ID
-      --client-secret  data API client secret
-      --code-version   b2c code version
-      --verify         verify SSL                      [boolean] [default: true]
-      --secure-server  b2c instance hostname (webdav write access)
-      --certificate    path to pkcs12 certificate
-      --passphrase     passphrase for certificate
+  -i, --instance                            instance name in config file
+  -s, --server                              b2c instance hostname
+  -u, --username                            webdav username
+  -p, --password                            password/webdav access key
+      --client-id, --oauth-client-id        API client ID
+      --client-secret,                      API client secret
+      --oauth-client-secret
+      --code-version                        b2c code version
+      --verify                              verify SSL [boolean] [default: true]
+      --secure-server                       b2c instance hostname (webdav write
+                                            access)
+      --certificate                         path to pkcs12 certificate
+      --passphrase                          passphrase for certificate
+      --cartridge, --include-cartridges     cartridges (Default: autodetect)
+                                                                         [array]
+      --exclude-cartridges                  ignore these cartridges      [array]
 
 Options:
       --version  Show version number                                   [boolean]
@@ -257,6 +266,7 @@ b2c-tools instance open
 - Environment Variables
   - ENV variables are prefixed with `SFCC_` and should match the name of a CLI argument
   - ex: `SFCC_CLIENT_ID=1234 b2c-tools`
+- A `.env` file in the current working directory can specify environment variables
 - A `dw.json` configuration file for instance-specific configuration (path can be changed with the `--config` option)
   - Multiple instance ("multi-config") is supported using the same format as [
     Intellij SFCC](https://smokeelow.visualstudio.com/Intellij%20SFCC/_wiki/wikis/intellij-sfcc.wiki/25/dw.json?anchor=multiple-connections). Instances can be selected using the `-i/--instance` option
@@ -314,18 +324,24 @@ authentication types.*
         {
             "client_id": "...",
             "permissions": [
-                {
-                    "operations": [
+              {
+                "path": "/Logs",
+                "operations": [
+                  "read"
+                ]
+              },
+              {
+                "path": "/impex",
+                "operations": [
                         "read_write"
-                    ],
-                    "path": "/impex"
-                },
-                {
-                    "operations": [
-                        "read_write"
-                    ],
-                    "path": "/cartridges"
-                }
+                ],
+              },
+              {
+                "path": "/cartridges",
+                "operations": [
+                    "read_write"
+                ]
+              }
             ]
         }
     ]
@@ -387,7 +403,7 @@ Additional permissions can be useful for the `export site` subcommand to discove
 ```json
 {
     "methods": [
-        "get",
+        "get"
     ],
     "read_attributes": "(**)",
     "resource_id": "/sites"

@@ -9,7 +9,8 @@ const winston = require("winston");
 const path = require("path");
 
 exports.CONFIG = {
-    ENVIRONMENT: {}
+    ENVIRONMENT: {},
+    MIGRATIONS_DIR: path.resolve("migrations")
 };
 
 function setupLogging(debug = false) {
@@ -85,13 +86,18 @@ exports.cli = yargs
     })
     .option('cartridge', {
         describe: 'cartridges (Default: autodetect)',
+        alias: 'include-cartridges',
+        type: 'array'
+    })
+    .option('exclude-cartridges', {
+        describe: 'ignore these cartridges',
         type: 'array'
     })
     .option('config', {
         describe: 'path to dw.json config',
         default: 'dw.json'
     })
-    .group(['i', 's', 'u', 'p', 'client-id', 'client-secret', 'code-version', 'verify', 'secure-server', 'certificate', 'passphrase', 'cartridge'], "B2C Connection:")
+    .group(['i', 's', 'u', 'p', 'client-id', 'client-secret', 'code-version', 'verify', 'secure-server', 'certificate', 'passphrase', 'cartridge', 'exclude-cartridges'], "B2C Connection:")
     // Load default configs from "b2c-tools" key in package.json (if present)
     .pkgConf("b2c-tools")
     .middleware(function (argv, _yargs) {
@@ -194,5 +200,9 @@ exports.cli = yargs
             passphrase: argv.passphrase,
             cartridges: argv.cartridge
         });
+
+        if (argv["migrations-dir"]) {
+            exports.CONFIG.MIGRATIONS_DIR = argv["migrations-dir"];
+        }
     })
 

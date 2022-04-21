@@ -60,82 +60,94 @@ var {Environment, siteArchiveExportJson} = require('@SalesforceCommerceCloud/b2c
     *   [Parameters][46]
 *   [processContent][47]
     *   [Parameters][48]
-*   [getDataUnitsFromWeb][49]
-    *   [Parameters][50]
-*   [configNameFromHostname][51]
+*   [CollectionLists][49]
+    *   [Properties][50]
+*   [getCollectionsFromInstance][51]
     *   [Parameters][52]
-*   [CartridgeMapping][53]
-    *   [Properties][54]
-*   [findCartridges][55]
-*   [reloadCodeVersion][56]
-    *   [Parameters][57]
-*   [syncCartridges][58]
-    *   [Parameters][59]
-*   [LogFile][60]
-    *   [Properties][61]
-*   [getLogs][62]
-    *   [Parameters][63]
-*   [tailCommand][64]
+*   [getDataUnitsFromWeb][53]
+    *   [Parameters][54]
+*   [configNameFromHostname][55]
+    *   [Parameters][56]
+*   [LogFile][57]
+    *   [Properties][58]
+*   [getLogs][59]
+    *   [Parameters][60]
+*   [tailCommand][61]
+    *   [Parameters][62]
+*   [b2cTools/jobs][63]
+*   [waitForJob][64]
     *   [Parameters][65]
-*   [b2cTools/jobs][66]
-*   [waitForJob][67]
-    *   [Parameters][68]
-*   [siteArchiveImport][69]
-    *   [Parameters][70]
-*   [ExportSitesConfiguration][71]
-    *   [Properties][72]
-*   [ExportGlobalDataConfiguration][73]
-    *   [Properties][74]
-*   [ExportDataUnitsConfiguration][75]
-    *   [Properties][76]
-*   [siteArchiveExport][77]
-    *   [Parameters][78]
-*   [siteArchiveExportJSON][79]
-    *   [Parameters][80]
-*   [siteArchiveImportJSON][81]
-    *   [Parameters][82]
-*   [siteArchiveExportText][83]
-    *   [Parameters][84]
-*   [siteArchiveImportText][85]
-    *   [Parameters][86]
-*   [ResourceDocument][87]
-    *   [Properties][88]
-*   [permissionValidatorCallback][89]
-*   [compareResourceDocuments][90]
-    *   [Parameters][91]
-*   [ensureDataAPIPermissions][92]
-    *   [Parameters][93]
-*   [sleep][94]
-    *   [Parameters][95]
+*   [JobExecutionParameter][66]
+    *   [Properties][67]
+*   [JobExecution][68]
+    *   [Properties][69]
+*   [executeJob][70]
+    *   [Parameters][71]
+*   [siteArchiveImport][72]
+    *   [Parameters][73]
+*   [ExportSitesConfiguration][74]
+    *   [Properties][75]
+*   [ExportGlobalDataConfiguration][76]
+    *   [Properties][77]
+*   [ExportDataUnitsConfiguration][78]
+    *   [Properties][79]
+*   [siteArchiveExport][80]
+    *   [Parameters][81]
+*   [siteArchiveExportJSON][82]
+    *   [Parameters][83]
+*   [siteArchiveImportJSON][84]
+    *   [Parameters][85]
+*   [siteArchiveExportText][86]
+    *   [Parameters][87]
+*   [siteArchiveImportText][88]
+    *   [Parameters][89]
+*   [ResourceDocument][90]
+    *   [Properties][91]
+*   [permissionValidatorCallback][92]
+*   [compareResourceDocuments][93]
+    *   [Parameters][94]
+*   [ensureDataAPIPermissions][95]
+    *   [Parameters][96]
+*   [sleep][97]
+    *   [Parameters][98]
+*   [CartridgeMapping][99]
+    *   [Properties][100]
+*   [findCartridges][101]
+*   [reloadCodeVersion][102]
+    *   [Parameters][103]
+*   [syncCartridges][104]
+    *   [Parameters][105]
+*   [downloadCodeVersion][106]
+    *   [Parameters][107]
 
 ## EnvironmentOpts
 
-[lib/environment.js:74-378][96]
+[lib/environment.js:74-378][108]
 
-Type: [Object][97]
+Type: [Object][109]
 
 ### Properties
 
-*   `server` **[string][98]**
-*   `secureServer` **[string][98]** optional hostname used for WebDAV access
-*   `username` **[string][98]**
-*   `password` **[string][98]**
-*   `clientID` **[string][98]**
-*   `clientSecret` **[string][98]**
-*   `codeVersion` **[string][98]**
-*   `verify` **[boolean][99]** verify SSL
-*   `certificate` **[string][98]** pfx path
-*   `passphrase` **[string][98]** passphrase for pfx above
+*   `server` **[string][110]**
+*   `secureServer` **[string][110]** optional hostname used for WebDAV access
+*   `username` **[string][110]**
+*   `password` **[string][110]**
+*   `clientID` **[string][110]**
+*   `clientSecret` **[string][110]**
+*   `codeVersion` **[string][110]**
+*   `verify` **[boolean][111]** verify SSL
+*   `certificate` **[string][110]** pfx path
+*   `passphrase` **[string][110]** passphrase for pfx above
 
 ## Environment
 
-[lib/environment.js:74-378][100]
+[lib/environment.js:74-378][112]
 
 Provides for authentication and WebDAV/OCAPI access
 
 ### Parameters
 
-*   `opts` **[EnvironmentOpts][101]**  (optional, default `{}`)
+*   `opts` **[EnvironmentOpts][113]**  (optional, default `{}`)
 
 ### Examples
 
@@ -151,7 +163,7 @@ const resp = await env.ocapi.get('sites');
 
 ### am
 
-[lib/environment.js:117-132][102]
+[lib/environment.js:117-132][114]
 
 account manager (account.demandware.net) scoped Axios instance
 
@@ -159,7 +171,7 @@ Type: axios.AxiosInstance
 
 ### ocapi
 
-[lib/environment.js:139-154][103]
+[lib/environment.js:139-154][115]
 
 OCAPI scoped Axios Client
 
@@ -167,7 +179,7 @@ Type: axios.AxiosInstance
 
 ### webdav
 
-[lib/environment.js:161-176][104]
+[lib/environment.js:161-176][116]
 
 WebDAV scoped Axios Client
 
@@ -175,26 +187,26 @@ Type: axios.AxiosInstance
 
 ### deauthenticate
 
-[lib/environment.js:373-377][105]
+[lib/environment.js:373-377][117]
 
 Clear access token so auths are performed anew
 
-Returns **[Promise][106]\<void>**
+Returns **[Promise][118]\<void>**
 
 ## AccessTokenResponse
 
-[lib/environment.js:322-335][107]
+[lib/environment.js:322-335][119]
 
-Type: [Object][97]
+Type: [Object][109]
 
 ### Properties
 
-*   `accessToken` **[string][98]**
-*   `expires` **[Date][108]**
+*   `accessToken` **[string][110]**
+*   `expires` **[Date][120]**
 
 ## collectMigrations
 
-[lib/migrations.js:37-47][109]
+[lib/migrations.js:37-47][121]
 
 Find all migration directories and scripts; excluding those matching the given patterns
 
@@ -203,147 +215,149 @@ Find all migration directories and scripts; excluding those matching the given p
 *   `dir`  {string}
 *   `exclude`  {string\[]} (optional, default `[]`)
 
-Returns **[Promise][106]<[Array][110]<[string][98]>>**
+Returns **[Promise][118]<[Array][122]<[string][110]>>**
 
 ## MigrationHelpers
 
-[lib/migrations.js:52-68][111]
+[lib/migrations.js:52-69][123]
 
 ## MigrationScriptArguments
 
-[lib/migrations.js:153-171][112]
+[lib/migrations.js:156-175][124]
 
-Type: [Object][97]
+Type: [Object][109]
 
 ### Properties
 
-*   `env` **[Environment][113]**
+*   `env` **[Environment][125]**
 *   `logger` **Logger**
-*   `helpers` **[MigrationHelpers][114]**
+*   `helpers` **[MigrationHelpers][126]**
 
 ## MigrationScriptCallback
 
-[lib/migrations.js:153-171][115]
+[lib/migrations.js:156-175][127]
 
-Type: [Function][116]
+Type: [Function][128]
 
 ### Parameters
 
-*   `args` **[MigrationScriptArguments][117]**
+*   `args` **[MigrationScriptArguments][129]**
 
-Returns **[Promise][106]<([boolean][99] | void)>**
+Returns **[Promise][118]<([boolean][111] | void)>**
 
 ## ToolkitInstanceState
 
-[lib/migrations.js:153-171][118]
+[lib/migrations.js:156-175][130]
 
-Type: [Object][97]
+Type: [Object][109]
 
 ### Properties
 
-*   `b2cToolkitDataVersion` **[number][119]**
-*   `b2cToolkitMigrations` **[string][98]**
+*   `b2cToolkitDataVersion` **[number][131]**
+*   `b2cToolkitMigrations` **[Array][122]<[string][110]>**
+*   `b2cToolsBootstrappedClientIDs` **[Array][122]<[string][110]>** list of client IDs that have been bootstrapped
 
 ## OnBootstrapLifecycleFunction
 
-[lib/migrations.js:153-171][120]
+[lib/migrations.js:156-175][132]
 
-Type: [Function][116]
+Type: [Function][128]
 
 ### Parameters
 
-*   `args` **[MigrationScriptArguments][117]**
+*   `args` **[MigrationScriptArguments][129]**
 
-Returns **[Promise][106]\<void>**
+Returns **[Promise][118]\<void>**
 
 ## BeforeAllLifecycleFunction
 
-[lib/migrations.js:153-171][121]
+[lib/migrations.js:156-175][133]
 
-Type: [Function][116]
+Type: [Function][128]
 
 ### Parameters
 
-*   `args` **[MigrationScriptArguments][117]**
-*   `migrationsToRun` **[Array][110]<[string][98]>** list of migrations that will be run (mutable)
-*   `willApply` **[boolean][99]** true if migrations will be applied to the instance
+*   `args` **[MigrationScriptArguments][129]**
+*   `migrationsToRun` **[Array][122]<[string][110]>** list of migrations that will be run (mutable)
+*   `willApply` **[boolean][111]** true if migrations will be applied to the instance
+*   `dryRun` **[boolean][111]** true if dry run is requested
 
-Returns **[Promise][106]\<void>**
+Returns **[Promise][118]\<void>**
 
 ## BeforeEachLifecycleFunction
 
-[lib/migrations.js:153-171][122]
+[lib/migrations.js:156-175][134]
 
-Type: [Function][116]
+Type: [Function][128]
 
 ### Parameters
 
-*   `args` **[MigrationScriptArguments][117]**
-*   `migration` **[string][98]** migration to be run
-*   `willApply` **[boolean][99]** true if migrations will be applied to the instance
+*   `args` **[MigrationScriptArguments][129]**
+*   `migration` **[string][110]** migration to be run
+*   `willApply` **[boolean][111]** true if migrations will be applied to the instance
 
-Returns **[Promise][106]<[boolean][99]>** return false to skip the current migration
+Returns **[Promise][118]<[boolean][111]>** return false to skip the current migration
 
 ## AfterEachLifecycleFunction
 
-[lib/migrations.js:153-171][123]
+[lib/migrations.js:156-175][135]
 
-Type: [Function][116]
+Type: [Function][128]
 
 ### Parameters
 
-*   `args` **[MigrationScriptArguments][117]**
-*   `migration` **[string][98]** migration to be run
-*   `willApply` **[boolean][99]** true if migrations will be applied to the instance
+*   `args` **[MigrationScriptArguments][129]**
+*   `migration` **[string][110]** migration to be run
+*   `willApply` **[boolean][111]** true if migrations will be applied to the instance
 
-Returns **[Promise][106]\<void>**
+Returns **[Promise][118]\<void>**
 
 ## AfterAllLifecycleFunction
 
-[lib/migrations.js:153-171][124]
+[lib/migrations.js:156-175][136]
 
-Type: [Function][116]
+Type: [Function][128]
 
 ### Parameters
 
-*   `args` **[MigrationScriptArguments][117]**
-*   `migrationsRan` **[Array][110]<[string][98]>** list of migrations ran
-*   `willApply` **[boolean][99]** true if migrations will be applied to the instance
+*   `args` **[MigrationScriptArguments][129]**
+*   `migrationsRan` **[Array][122]<[string][110]>** list of migrations ran
+*   `willApply` **[boolean][111]** true if migrations will be applied to the instance
 
-Returns **[Promise][106]\<void>**
+Returns **[Promise][118]\<void>**
 
 ## OnFailureLifecycleFunction
 
-[lib/migrations.js:153-171][125]
+[lib/migrations.js:156-175][137]
 
-Type: [Function][116]
+Type: [Function][128]
 
 ### Parameters
 
-*   `args` **[MigrationScriptArguments][117]**
-*   `migration` **[string][98]** migration to be run
-*   `e` **[Error][126]** exception raised during migration run
+*   `args` **[MigrationScriptArguments][129]**
+*   `migration` **[string][110]** migration to be run
+*   `e` **[Error][138]** exception raised during migration run
 
-Returns **[Promise][106]\<void>** re-raise exception or new exception to stop migration run
+Returns **[Promise][118]\<void>** re-raise exception or new exception to stop migration run
 
 ## MigrationLifecycleFunctions
 
-[lib/migrations.js:153-171][127]
+[lib/migrations.js:156-175][139]
 
-Type: [Object][97]
+Type: [Object][109]
 
 ### Properties
 
-*   `onBootstrap` **([OnBootstrapLifecycleFunction][128] | [undefined][129])**
-*   `beforeAll` **([BeforeAllLifecycleFunction][130] | [undefined][129])**
-*   `beforeEach` **([BeforeEachLifecycleFunction][131] | [undefined][129])**
-*   `afterEach` **([AfterAllLifecycleFunction][132] | [undefined][129])**
-*   `afterAll` **([AfterAllLifecycleFunction][132] | [undefined][129])**
-*   `onFailure` **([OnFailureLifecycleFunction][133] | [undefined][129])**
+*   `onBootstrap` **([OnBootstrapLifecycleFunction][140] | [undefined][141])**
+*   `beforeAll` **([BeforeAllLifecycleFunction][142] | [undefined][141])**
+*   `beforeEach` **([BeforeEachLifecycleFunction][143] | [undefined][141])**
+*   `afterEach` **([AfterAllLifecycleFunction][144] | [undefined][141])**
+*   `afterAll` **([AfterAllLifecycleFunction][144] | [undefined][141])**
+*   `onFailure` **([OnFailureLifecycleFunction][145] | [undefined][141])**
 
 ## getInstanceState
 
-[lib/migrations.js:153-171][134]
+[lib/migrations.js:156-175][146]
 
 Get the instance state from global preferences
 
@@ -351,24 +365,24 @@ Get the instance state from global preferences
 
 *   `env`  {Environment}
 
-Returns **[Promise][106]<[ToolkitInstanceState][135]>**
+Returns **[Promise][118]<[ToolkitInstanceState][147]>**
 
 ## updateInstanceMetadata
 
-[lib/migrations.js:180-229][136]
+[lib/migrations.js:184-244][148]
 
 Imports the latest toolkit metadata
 
 ### Parameters
 
-*   `env` **[Environment][113]**
-*   `lifeCycleModule` **[MigrationLifecycleFunctions][137]**
+*   `env` **[Environment][125]**
+*   `lifeCycleModule` **[MigrationLifecycleFunctions][149]**
 
-Returns **[Promise][106]\<void>**
+Returns **[Promise][118]\<void>**
 
 ## updateInstanceMigrations
 
-[lib/migrations.js:237-251][138]
+[lib/migrations.js:252-266][150]
 
 Updates instance with new migrations set
 
@@ -377,48 +391,49 @@ Updates instance with new migrations set
 *   `env`  {Environment}
 *   `migrations`  {string\[]}
 
-Returns **[Promise][106]\<void>**
+Returns **[Promise][118]\<void>**
 
 ## migrateInstance
 
-[lib/migrations.js:265-384][139]
+[lib/migrations.js:281-408][151]
 
 Inspects an instance and executes site impex imports and "migration scripts" from the
 given `dir`.
 
 ### Parameters
 
-*   `env` **[Environment][113]**
-*   `dir` **[string][98]** migrations directory
-*   `exclude` **[Array][110]<[string][98]>** array of regular expression strings (optional, default `[]`)
-*   `apply` **[boolean][99]** should migrations be applied to the instance after running? (optional, default `true`)
-*   `dryRun` **[boolean][99]** only output migrations to be run (optional, default `false`)
-*   `forceBootstrap` **[boolean][99]**  (optional, default `false`)
+*   `env` **[Environment][125]**
+*   `dir` **[string][110]** migrations directory
+*   `exclude` **[Array][122]<[string][110]>** array of regular expression strings (optional, default `[]`)
+*   `apply` **[boolean][111]** should migrations be applied to the instance after running? (optional, default `true`)
+*   `dryRun` **[boolean][111]** only output migrations to be run (optional, default `false`)
+*   `forceBootstrap` **[boolean][111]**  (optional, default `false`)
+*   `allowBootstrap` **[boolean][111]**  (optional, default `true`)
 
-Returns **[Promise][106]\<void>**
+Returns **[Promise][118]\<void>**
 
 ## lifeCycleModule
 
-[lib/migrations.js:272-272][140]
+[lib/migrations.js:288-288][152]
 
 ## runMigrationScript
 
-[lib/migrations.js:335-335][141]
+[lib/migrations.js:359-359][153]
 
 ## runMigrationScript
 
-[lib/migrations.js:392-402][142]
+[lib/migrations.js:416-426][154]
 
 ### Parameters
 
-*   `env` **[Environment][113]**
-*   `target` **[string][98]** path to migration script
+*   `env` **[Environment][125]**
+*   `target` **[string][110]** path to migration script
 
-Returns **[Promise][106]<[boolean][99]>**
+Returns **[Promise][118]<[boolean][111]>**
 
 ## processContent
 
-[lib/command-export.js:23-68][143]
+[lib/command-export.js:23-68][155]
 
 Recursively process a <content> to extract child components and images
 
@@ -431,87 +446,65 @@ Recursively process a <content> to extract child components and images
 *   `logPrefix`  for debugging output
 *   `assetQuery`  {string\[]}
 
+## CollectionLists
+
+[lib/command-export.js:186-245][156]
+
+Type: [Object][109]
+
+### Properties
+
+*   `sites` **[Array][122]<[string][110]>**
+*   `inventoryLists` **[Array][122]<[string][110]>**
+*   `catalogs` **[Array][122]<[string][110]>**
+
+## getCollectionsFromInstance
+
+[lib/command-export.js:186-245][157]
+
+Retrieves list of catalogs, inventory lists, sites and libraries for interactive display
+
+### Parameters
+
+*   `env`  {Environment}
+
+Returns **[Promise][118]<[CollectionLists][158]>**
+
 ## getDataUnitsFromWeb
 
-[lib/command-export.js:181-253][144]
+[lib/command-export.js:254-336][159]
 
 Launch a web page to collect data units to export
 
 ### Parameters
 
-*   `sites`  {string\[]}
-*   `catalogs`  {string\[]}
 *   `env`  {Environment}
+*   `collections`  {CollectionLists}
 
-Returns **[Promise][106]<[object][97]>**
+Returns **[Promise][118]<[object][109]>**
 
 ## configNameFromHostname
 
-[lib/command-instance.js:12-15][145]
+[lib/command-instance.js:12-15][160]
 
 ### Parameters
 
-*   `hostname` **[string][98]**
-
-## CartridgeMapping
-
-[lib/code.js:22-36][146]
-
-Type: [Object][97]
-
-### Properties
-
-*   `dest` **[string][98]** cartridge name
-*   `src` **[string][98]** directory
-
-## findCartridges
-
-[lib/code.js:22-36][147]
-
-Find Cartridges recursively in the working directory
-
-Returns **[Array][110]<[CartridgeMapping][148]>**
-
-## reloadCodeVersion
-
-[lib/code.js:44-62][149]
-
-Reloads (or activates) the environments code version
-
-### Parameters
-
-*   `env` **[Environment][113]**
-
-Returns **[Promise][106]\<void>**
-
-## syncCartridges
-
-[lib/code.js:72-102][150]
-
-Syncs the given cartridge mapping (src:dest) to the environments code version
-
-### Parameters
-
-*   `env` **[Environment][113]**
-*   `cartridges` **[Array][110]<[CartridgeMapping][148]>**
-*   `reload` **[boolean][99]**  (optional, default `false`)
-
-Returns **[Promise][106]\<void>**
+*   `hostname` **[string][110]**
 
 ## LogFile
 
-[lib/command-tail.js:19-42][151]
+[lib/command-tail.js:19-42][161]
 
-Type: [Object][97]
+Type: [Object][109]
 
 ### Properties
 
-*   `name` **[string][98]**
-*   `lastModified` **[Date][108]**
+*   `name` **[string][110]**
+*   `lastModified` **[Date][120]**
 
 ## getLogs
 
-[lib/command-tail.js:19-42][152]
+[lib/command-tail.js:19-42][162]
 
 Get the logs from the instance
 
@@ -519,156 +512,194 @@ Get the logs from the instance
 
 *   `env`  {Environment}
 
-Returns **[Promise][106]<[Array][110]<[LogFile][153]>>**
+Returns **[Promise][118]<[Array][122]<[LogFile][163]>>**
 
 ## tailCommand
 
-[lib/command-tail.js:49-104][154]
+[lib/command-tail.js:49-104][164]
 
 ### Parameters
 
 *   `filters`  {string\[]}
 
-Returns **[Promise][106]\<void>**
+Returns **[Promise][118]\<void>**
 
 ## b2cTools/jobs
 
-[lib/jobs.js:6-6][155]
+[lib/jobs.js:6-6][165]
 
 import and export job helpers
 
 ## waitForJob
 
-[lib/jobs.js:24-49][156]
+[lib/jobs.js:24-53][166]
 
 ### Parameters
 
-*   `env`  {Environment}
-*   `jobId`  {string} job identifier
-*   `executionId`  {string} job execution id
+*   `env` **[Environment][125]**
+*   `jobId` **[string][110]** job identifier
+*   `executionId` **[string][110]** job execution id
 
-Returns **[Promise][106]\<void>**
+Returns **[Promise][118]\<void>**
+
+## JobExecutionParameter
+
+[lib/jobs.js:75-80][167]
+
+Type: [Object][109]
+
+### Properties
+
+*   `name` **[string][110]**
+*   `value` **[string][110]**
+
+## JobExecution
+
+[lib/jobs.js:75-80][168]
+
+Type: [Object][109]
+
+### Properties
+
+*   `id` **[string][110]**
+*   `job_id` **[string][110]**
+*   `status` **[string][110]**
+
+## executeJob
+
+[lib/jobs.js:75-80][169]
+
+### Parameters
+
+*   `env` **[Environment][125]**
+*   `jobId` **[string][110]** job identifier
+*   `parameters` **[Array][122]<[JobExecutionParameter][170]>**  (optional, default `[]`)
+
+Returns **[Promise][118]\<void>**
 
 ## siteArchiveImport
 
-[lib/jobs.js:59-102][157]
+[lib/jobs.js:92-143][171]
 
 Import a site impex
 
 ### Parameters
 
-*   `env` **[Environment][113]**
-*   `target` **([string][98] | [Buffer][158])** directory, zip file path or buffer of zip content
-*   `archiveName` **[string][98]** require if Buffer is used
+*   `env` **[Environment][125]**
+*   `target` **([string][110] | [Buffer][172])** directory, zip file path or buffer of zip content
+*   `options` **[object][109]**
 
-Returns **[Promise][106]\<void>**
+    *   `options.archiveName` **[string][110]?** required if Buffer is used
+    *   `options.keepArchive` **[boolean][111]?** if true, keep archive on isntance
+
+Returns **[Promise][118]\<void>**
 
 ## ExportSitesConfiguration
 
-[lib/jobs.js:186-205][159]
+[lib/jobs.js:227-246][173]
 
-Type: [Object][97]
+Type: [Object][109]
 
 ### Properties
 
-*   `ab_tests` **([undefined][129] | [boolean][99])**
-*   `active_data_feeds` **([undefined][129] | [boolean][99])**
-*   `all` **([undefined][129] | [boolean][99])**
-*   `cache_settings` **([undefined][129] | [boolean][99])**
-*   `campaigns_and_promotions` **([undefined][129] | [boolean][99])**
-*   `content` **([undefined][129] | [boolean][99])**
-*   `coupons` **([undefined][129] | [boolean][99])**
-*   `custom_objects` **([undefined][129] | [boolean][99])**
-*   `customer_cdn_settings` **([undefined][129] | [boolean][99])**
-*   `customer_groups` **([undefined][129] | [boolean][99])**
-*   `distributed_commerce_extensions` **([undefined][129] | [boolean][99])**
-*   `dynamic_file_resources` **([undefined][129] | [boolean][99])**
-*   `gift_certificates` **([undefined][129] | [boolean][99])**
-*   `ocapi_settings` **([undefined][129] | [boolean][99])**
-*   `payment_methods` **([undefined][129] | [boolean][99])**
-*   `payment_processors` **([undefined][129] | [boolean][99])**
-*   `redirect_urls` **([undefined][129] | [boolean][99])**
-*   `search_settings` **([undefined][129] | [boolean][99])**
-*   `shipping` **([undefined][129] | [boolean][99])**
-*   `site_descriptor` **([undefined][129] | [boolean][99])**
-*   `site_preferences` **([undefined][129] | [boolean][99])**
-*   `sitemap_settings` **([undefined][129] | [boolean][99])**
-*   `slots` **([undefined][129] | [boolean][99])**
-*   `sorting_rules` **([undefined][129] | [boolean][99])**
-*   `source_codes` **([undefined][129] | [boolean][99])**
-*   `static_dynamic_alias_mappings` **([undefined][129] | [boolean][99])**
-*   `stores` **([undefined][129] | [boolean][99])**
-*   `tax` **([undefined][129] | [boolean][99])**
-*   `url_rules` **([undefined][129] | [boolean][99])**
+*   `ab_tests` **([undefined][141] | [boolean][111])**
+*   `active_data_feeds` **([undefined][141] | [boolean][111])**
+*   `all` **([undefined][141] | [boolean][111])**
+*   `cache_settings` **([undefined][141] | [boolean][111])**
+*   `campaigns_and_promotions` **([undefined][141] | [boolean][111])**
+*   `content` **([undefined][141] | [boolean][111])**
+*   `coupons` **([undefined][141] | [boolean][111])**
+*   `custom_objects` **([undefined][141] | [boolean][111])**
+*   `customer_cdn_settings` **([undefined][141] | [boolean][111])**
+*   `customer_groups` **([undefined][141] | [boolean][111])**
+*   `distributed_commerce_extensions` **([undefined][141] | [boolean][111])**
+*   `dynamic_file_resources` **([undefined][141] | [boolean][111])**
+*   `gift_certificates` **([undefined][141] | [boolean][111])**
+*   `ocapi_settings` **([undefined][141] | [boolean][111])**
+*   `payment_methods` **([undefined][141] | [boolean][111])**
+*   `payment_processors` **([undefined][141] | [boolean][111])**
+*   `redirect_urls` **([undefined][141] | [boolean][111])**
+*   `search_settings` **([undefined][141] | [boolean][111])**
+*   `shipping` **([undefined][141] | [boolean][111])**
+*   `site_descriptor` **([undefined][141] | [boolean][111])**
+*   `site_preferences` **([undefined][141] | [boolean][111])**
+*   `sitemap_settings` **([undefined][141] | [boolean][111])**
+*   `slots` **([undefined][141] | [boolean][111])**
+*   `sorting_rules` **([undefined][141] | [boolean][111])**
+*   `source_codes` **([undefined][141] | [boolean][111])**
+*   `static_dynamic_alias_mappings` **([undefined][141] | [boolean][111])**
+*   `stores` **([undefined][141] | [boolean][111])**
+*   `tax` **([undefined][141] | [boolean][111])**
+*   `url_rules` **([undefined][141] | [boolean][111])**
 
 ## ExportGlobalDataConfiguration
 
-[lib/jobs.js:186-205][160]
+[lib/jobs.js:227-246][174]
 
-Type: [Object][97]
+Type: [Object][109]
 
 ### Properties
 
-*   `access_roles` **([undefined][129] | [boolean][99])**
-*   `all` **([undefined][129] | [boolean][99])**
-*   `csc_settings` **([undefined][129] | [boolean][99])**
-*   `csrf_whitelists` **([undefined][129] | [boolean][99])**
-*   `custom_preference_groups` **([undefined][129] | [boolean][99])**
-*   `custom_quota_settings` **([undefined][129] | [boolean][99])**
-*   `custom_types` **([undefined][129] | [boolean][99])**
-*   `geolocations` **([undefined][129] | [boolean][99])**
-*   `global_custom_objects` **([undefined][129] | [boolean][99])**
-*   `job_schedules` **([undefined][129] | [boolean][99])**
-*   `job_schedules_deprecated` **([undefined][129] | [boolean][99])**
-*   `locales` **([undefined][129] | [boolean][99])**
-*   `meta_data` **([undefined][129] | [boolean][99])**
-*   `oauth_providers` **([undefined][129] | [boolean][99])**
-*   `ocapi_settings` **([undefined][129] | [boolean][99])**
-*   `page_meta_tags` **([undefined][129] | [boolean][99])**
-*   `preferences` **([undefined][129] | [boolean][99])**
-*   `price_adjustment_limits` **([undefined][129] | [boolean][99])**
-*   `services` **([undefined][129] | [boolean][99])**
-*   `sorting_rules` **([undefined][129] | [boolean][99])**
-*   `static_resources` **([undefined][129] | [boolean][99])**
-*   `system_type_definitions` **([undefined][129] | [boolean][99])**
-*   `users` **([undefined][129] | [boolean][99])**
-*   `webdav_client_permissions` **([undefined][129] | [boolean][99])**
+*   `access_roles` **([undefined][141] | [boolean][111])**
+*   `all` **([undefined][141] | [boolean][111])**
+*   `csc_settings` **([undefined][141] | [boolean][111])**
+*   `csrf_whitelists` **([undefined][141] | [boolean][111])**
+*   `custom_preference_groups` **([undefined][141] | [boolean][111])**
+*   `custom_quota_settings` **([undefined][141] | [boolean][111])**
+*   `custom_types` **([undefined][141] | [boolean][111])**
+*   `geolocations` **([undefined][141] | [boolean][111])**
+*   `global_custom_objects` **([undefined][141] | [boolean][111])**
+*   `job_schedules` **([undefined][141] | [boolean][111])**
+*   `job_schedules_deprecated` **([undefined][141] | [boolean][111])**
+*   `locales` **([undefined][141] | [boolean][111])**
+*   `meta_data` **([undefined][141] | [boolean][111])**
+*   `oauth_providers` **([undefined][141] | [boolean][111])**
+*   `ocapi_settings` **([undefined][141] | [boolean][111])**
+*   `page_meta_tags` **([undefined][141] | [boolean][111])**
+*   `preferences` **([undefined][141] | [boolean][111])**
+*   `price_adjustment_limits` **([undefined][141] | [boolean][111])**
+*   `services` **([undefined][141] | [boolean][111])**
+*   `sorting_rules` **([undefined][141] | [boolean][111])**
+*   `static_resources` **([undefined][141] | [boolean][111])**
+*   `system_type_definitions` **([undefined][141] | [boolean][111])**
+*   `users` **([undefined][141] | [boolean][111])**
+*   `webdav_client_permissions` **([undefined][141] | [boolean][111])**
 
 ## ExportDataUnitsConfiguration
 
-[lib/jobs.js:186-205][161]
+[lib/jobs.js:227-246][175]
 
-Type: [Object][97]
+Type: [Object][109]
 
 ### Properties
 
-*   `catalog_static_resources` **([undefined][129] | [Object][97]<[string][98], [boolean][99]>)**
-*   `catalogs` **([undefined][129] | [Object][97]<[string][98], [boolean][99]>)**
-*   `customer_lists` **([undefined][129] | [Object][97]<[string][98], [boolean][99]>)**
-*   `inventory_lists` **([undefined][129] | [Object][97]<[string][98], [boolean][99]>)**
-*   `library_static_resources` **([undefined][129] | [Object][97]<[string][98], [boolean][99]>)**
-*   `libraries` **([undefined][129] | [Object][97]<[string][98], [boolean][99]>)**
-*   `price_books` **([undefined][129] | [Object][97]<[string][98], [boolean][99]>)**
-*   `sites` **([undefined][129] | [Object][97]<[string][98], [ExportSitesConfiguration][162]>)**
-*   `global_data` **([undefined][129] | [ExportGlobalDataConfiguration][163])**
+*   `catalog_static_resources` **([undefined][141] | [Object][109]<[string][110], [boolean][111]>)**
+*   `catalogs` **([undefined][141] | [Object][109]<[string][110], [boolean][111]>)**
+*   `customer_lists` **([undefined][141] | [Object][109]<[string][110], [boolean][111]>)**
+*   `inventory_lists` **([undefined][141] | [Object][109]<[string][110], [boolean][111]>)**
+*   `library_static_resources` **([undefined][141] | [Object][109]<[string][110], [boolean][111]>)**
+*   `libraries` **([undefined][141] | [Object][109]<[string][110], [boolean][111]>)**
+*   `price_books` **([undefined][141] | [Object][109]<[string][110], [boolean][111]>)**
+*   `sites` **([undefined][141] | [Object][109]<[string][110], [ExportSitesConfiguration][176]>)**
+*   `global_data` **([undefined][141] | [ExportGlobalDataConfiguration][177])**
 
 ## siteArchiveExport
 
-[lib/jobs.js:186-205][164]
+[lib/jobs.js:227-246][178]
 
 Export the given site archive, returning the zip data
 
 ### Parameters
 
-*   `env` **[Environment][113]**
-*   `dataUnits` **[ExportDataUnitsConfiguration][165]**
-*   `zipFilename` **[string][98]** filename of the export or autogenerated
+*   `env` **[Environment][125]**
+*   `dataUnits` **[ExportDataUnitsConfiguration][179]**
+*   `zipFilename` **[string][110]** filename of the export
 
-Returns **[Promise][106]<[Buffer][158]>**
+Returns **[Promise][118]<[Buffer][172]>**
 
 ## siteArchiveExportJSON
 
-[lib/jobs.js:221-235][166]
+[lib/jobs.js:262-276][180]
 
 Export an object of impex files to JSON objects in xml2js form
 
@@ -681,27 +712,27 @@ returns:
 
 ### Parameters
 
-*   `env` **[Environment][113]**
-*   `dataUnits` **[ExportDataUnitsConfiguration][165]**
+*   `env` **[Environment][125]**
+*   `dataUnits` **[ExportDataUnitsConfiguration][179]**
 
-Returns **[Promise][106]<[Map][167]<[string][98], [object][97]>>**
+Returns **[Promise][118]<[Map][181]<[string][110], [object][109]>>**
 
 ## siteArchiveImportJSON
 
-[lib/jobs.js:244-265][168]
+[lib/jobs.js:285-308][182]
 
 Imports an object of impex filenames to objects to XML/JSON/text
 
 ### Parameters
 
-*   `env` **[Environment][113]**
-*   `data` **[Map][167]<[string][98], [object][97]>**
+*   `env` **[Environment][125]**
+*   `data` **[Map][181]<[string][110], [object][109]>**
 
-Returns **[Promise][106]\<void>**
+Returns **[Promise][118]\<void>**
 
 ## siteArchiveExportText
 
-[lib/jobs.js:279-296][169]
+[lib/jobs.js:322-339][183]
 
 Export an object of impex files to strings of XML
 
@@ -712,62 +743,62 @@ returns:
 
 ### Parameters
 
-*   `env` **[Environment][113]**
-*   `dataUnits` **[ExportDataUnitsConfiguration][165]**
+*   `env` **[Environment][125]**
+*   `dataUnits` **[ExportDataUnitsConfiguration][179]**
 
-Returns **[Promise][106]<[Map][167]<[string][98], [string][98]>>**
+Returns **[Promise][118]<[Map][181]<[string][110], [string][110]>>**
 
 ## siteArchiveImportText
 
-[lib/jobs.js:305-318][170]
+[lib/jobs.js:348-363][184]
 
 Import filename to text strings as site impex
 
 ### Parameters
 
-*   `env` **[Environment][113]**
-*   `data` **[Map][167]<[string][98], [string][98]>**
+*   `env` **[Environment][125]**
+*   `data` **[Map][181]<[string][110], [string][110]>**
 
-Returns **[Promise][106]\<void>**
+Returns **[Promise][118]\<void>**
 
 ## ResourceDocument
 
-[lib/jobs.js:341-348][171]
+[lib/jobs.js:386-393][185]
 
-Type: [Object][97]
+Type: [Object][109]
 
 ### Properties
 
-*   `resource_id` **[string][98]**
-*   `cache_time` **[number][119]**
-*   `methods` **[Array][110]<[string][98]>**
-*   `read_attributes` **[string][98]**
-*   `write_attributes` **[string][98]**
+*   `resource_id` **[string][110]**
+*   `cache_time` **[number][131]**
+*   `methods` **[Array][122]<[string][110]>**
+*   `read_attributes` **[string][110]**
+*   `write_attributes` **[string][110]**
 
 ## permissionValidatorCallback
 
-[lib/jobs.js:341-348][172]
+[lib/jobs.js:386-393][186]
 
 This callback is displayed as part of the Requester class.
 
-Type: [Function][116]
+Type: [Function][128]
 
-Returns **[boolean][99]** true if permission is validated
+Returns **[boolean][111]** true if permission is validated
 
 ## compareResourceDocuments
 
-[lib/jobs.js:341-348][173]
+[lib/jobs.js:386-393][187]
 
 ### Parameters
 
-*   `a` **[ResourceDocument][174]**
-*   `b` **[ResourceDocument][174]**
+*   `a` **[ResourceDocument][188]**
+*   `b` **[ResourceDocument][188]**
 
-Returns **[boolean][99]** true if the documents are trivially equal
+Returns **[boolean][111]** true if the documents are trivially equal
 
 ## ensureDataAPIPermissions
 
-[lib/jobs.js:365-418][175]
+[lib/jobs.js:411-464][189]
 
 Ensures the environment has access to the given DATA API resources by adding or updating
 Resource Documents for the client ID.
@@ -779,16 +810,18 @@ values are equal to the instance's state the resource will not be updated.
 
 ### Parameters
 
-*   `env` **[Environment][113]**
-*   `resources` **[Array][110]<[ResourceDocument][174]>** array of resources to add/update (optional, default `[]`)
-*   `validator` **[permissionValidatorCallback][176]** array of resources to add/update
-*   `maximumChecks` **[number][119]?** maximum number of permission checks (optional, default `60`)
+*   `env` **[Environment][125]**
+*   `resources` **[Array][122]<[ResourceDocument][188]>** array of resources to add/update (optional, default `[]`)
+*   `validator` **[permissionValidatorCallback][190]** array of resources to add/update
+*   `options` **[object][109]**
 
-Returns **[Promise][106]\<void>**
+    *   `options.maximumChecks` **[number][131]?** maximum number of permission checks (optional, default `60`)
+
+Returns **[Promise][118]\<void>**
 
 ## sleep
 
-[lib/util.js:7-9][177]
+[lib/util.js:7-9][191]
 
 Sleep for ms milliseconds
 
@@ -796,7 +829,64 @@ Sleep for ms milliseconds
 
 *   `ms`  {number} milliseconds
 
-Returns **[Promise][106]\<void>**
+Returns **[Promise][118]\<void>**
+
+## CartridgeMapping
+
+[lib/code.js:22-36][192]
+
+Type: [Object][109]
+
+### Properties
+
+*   `dest` **[string][110]** cartridge name
+*   `src` **[string][110]** directory
+
+## findCartridges
+
+[lib/code.js:22-36][193]
+
+Find Cartridges recursively in the working directory
+
+Returns **[Array][122]<[CartridgeMapping][194]>**
+
+## reloadCodeVersion
+
+[lib/code.js:44-62][195]
+
+Reloads (or activates) the environments code version
+
+### Parameters
+
+*   `env` **[Environment][125]**
+
+Returns **[Promise][118]\<void>**
+
+## syncCartridges
+
+[lib/code.js:72-102][196]
+
+Syncs the given cartridge mapping (src:dest) to the environments code version
+
+### Parameters
+
+*   `env` **[Environment][125]**
+*   `cartridges` **[Array][122]<[CartridgeMapping][194]>**
+*   `reload` **[boolean][111]**  (optional, default `false`)
+
+Returns **[Promise][118]\<void>**
+
+## downloadCodeVersion
+
+[lib/code.js:110-123][197]
+
+Downloads the code version as a zipped archive
+
+### Parameters
+
+*   `env` **[Environment][125]**
+
+Returns **[Promise][118]<[Buffer][172]>**
 
 [1]: #environmentopts
 
@@ -894,260 +984,301 @@ Returns **[Promise][106]\<void>**
 
 [48]: #parameters-14
 
-[49]: #getdataunitsfromweb
+[49]: #collectionlists
 
-[50]: #parameters-15
+[50]: #properties-5
 
-[51]: #confignamefromhostname
+[51]: #getcollectionsfrominstance
 
-[52]: #parameters-16
+[52]: #parameters-15
 
-[53]: #cartridgemapping
+[53]: #getdataunitsfromweb
 
-[54]: #properties-5
+[54]: #parameters-16
 
-[55]: #findcartridges
+[55]: #confignamefromhostname
 
-[56]: #reloadcodeversion
+[56]: #parameters-17
 
-[57]: #parameters-17
+[57]: #logfile
 
-[58]: #synccartridges
+[58]: #properties-6
 
-[59]: #parameters-18
+[59]: #getlogs
 
-[60]: #logfile
+[60]: #parameters-18
 
-[61]: #properties-6
+[61]: #tailcommand
 
-[62]: #getlogs
+[62]: #parameters-19
 
-[63]: #parameters-19
+[63]: #b2ctoolsjobs
 
-[64]: #tailcommand
+[64]: #waitforjob
 
 [65]: #parameters-20
 
-[66]: #b2ctoolsjobs
+[66]: #jobexecutionparameter
 
-[67]: #waitforjob
+[67]: #properties-7
 
-[68]: #parameters-21
+[68]: #jobexecution
 
-[69]: #sitearchiveimport
+[69]: #properties-8
 
-[70]: #parameters-22
+[70]: #executejob
 
-[71]: #exportsitesconfiguration
+[71]: #parameters-21
 
-[72]: #properties-7
+[72]: #sitearchiveimport
 
-[73]: #exportglobaldataconfiguration
+[73]: #parameters-22
 
-[74]: #properties-8
+[74]: #exportsitesconfiguration
 
-[75]: #exportdataunitsconfiguration
+[75]: #properties-9
 
-[76]: #properties-9
+[76]: #exportglobaldataconfiguration
 
-[77]: #sitearchiveexport
+[77]: #properties-10
 
-[78]: #parameters-23
+[78]: #exportdataunitsconfiguration
 
-[79]: #sitearchiveexportjson
+[79]: #properties-11
 
-[80]: #parameters-24
+[80]: #sitearchiveexport
 
-[81]: #sitearchiveimportjson
+[81]: #parameters-23
 
-[82]: #parameters-25
+[82]: #sitearchiveexportjson
 
-[83]: #sitearchiveexporttext
+[83]: #parameters-24
 
-[84]: #parameters-26
+[84]: #sitearchiveimportjson
 
-[85]: #sitearchiveimporttext
+[85]: #parameters-25
 
-[86]: #parameters-27
+[86]: #sitearchiveexporttext
 
-[87]: #resourcedocument
+[87]: #parameters-26
 
-[88]: #properties-10
+[88]: #sitearchiveimporttext
 
-[89]: #permissionvalidatorcallback
+[89]: #parameters-27
 
-[90]: #compareresourcedocuments
+[90]: #resourcedocument
 
-[91]: #parameters-28
+[91]: #properties-12
 
-[92]: #ensuredataapipermissions
+[92]: #permissionvalidatorcallback
 
-[93]: #parameters-29
+[93]: #compareresourcedocuments
 
-[94]: #sleep
+[94]: #parameters-28
 
-[95]: #parameters-30
+[95]: #ensuredataapipermissions
 
-[96]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/environment.js#L47-L59 "Source code on GitHub"
+[96]: #parameters-29
 
-[97]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[97]: #sleep
 
-[98]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[98]: #parameters-30
 
-[99]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[99]: #cartridgemapping
 
-[100]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/environment.js#L74-L378 "Source code on GitHub"
+[100]: #properties-13
 
-[101]: #environmentopts
+[101]: #findcartridges
 
-[102]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/environment.js#L117-L132 "Source code on GitHub"
+[102]: #reloadcodeversion
 
-[103]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/environment.js#L139-L154 "Source code on GitHub"
+[103]: #parameters-31
 
-[104]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/environment.js#L161-L176 "Source code on GitHub"
+[104]: #synccartridges
 
-[105]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/environment.js#L373-L377 "Source code on GitHub"
+[105]: #parameters-32
 
-[106]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
+[106]: #downloadcodeversion
 
-[107]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/environment.js#L311-L315 "Source code on GitHub"
+[107]: #parameters-33
 
-[108]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date
+[108]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/environment.js#L47-L59 "Source code on GitHub"
 
-[109]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L37-L47 "Source code on GitHub"
+[109]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
-[110]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[110]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[111]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L52-L68 "Source code on GitHub"
+[111]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
 
-[112]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L71-L76 "Source code on GitHub"
+[112]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/environment.js#L74-L378 "Source code on GitHub"
 
-[113]: #environment
+[113]: #environmentopts
 
-[114]: #migrationhelpers
+[114]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/environment.js#L117-L132 "Source code on GitHub"
 
-[115]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L78-L83 "Source code on GitHub"
+[115]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/environment.js#L139-L154 "Source code on GitHub"
 
-[116]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+[116]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/environment.js#L161-L176 "Source code on GitHub"
 
-[117]: #migrationscriptarguments
+[117]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/environment.js#L373-L377 "Source code on GitHub"
 
-[118]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L85-L89 "Source code on GitHub"
+[118]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
 
-[119]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[119]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/environment.js#L311-L315 "Source code on GitHub"
 
-[120]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L91-L95 "Source code on GitHub"
+[120]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date
 
-[121]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L97-L103 "Source code on GitHub"
+[121]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/migrations.js#L37-L47 "Source code on GitHub"
 
-[122]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L105-L111 "Source code on GitHub"
+[122]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 
-[123]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L113-L119 "Source code on GitHub"
+[123]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/migrations.js#L52-L69 "Source code on GitHub"
 
-[124]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L121-L127 "Source code on GitHub"
+[124]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/migrations.js#L72-L77 "Source code on GitHub"
 
-[125]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L129-L135 "Source code on GitHub"
+[125]: #environment
 
-[126]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error
+[126]: #migrationhelpers
 
-[127]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L137-L145 "Source code on GitHub"
+[127]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/migrations.js#L79-L84 "Source code on GitHub"
 
-[128]: #onbootstraplifecyclefunction
+[128]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
 
-[129]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined
+[129]: #migrationscriptarguments
 
-[130]: #beforealllifecyclefunction
+[130]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/migrations.js#L86-L91 "Source code on GitHub"
 
-[131]: #beforeeachlifecyclefunction
+[131]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-[132]: #afteralllifecyclefunction
+[132]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/migrations.js#L93-L97 "Source code on GitHub"
 
-[133]: #onfailurelifecyclefunction
+[133]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/migrations.js#L99-L106 "Source code on GitHub"
 
-[134]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L153-L171 "Source code on GitHub"
+[134]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/migrations.js#L108-L114 "Source code on GitHub"
 
-[135]: #toolkitinstancestate
+[135]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/migrations.js#L116-L122 "Source code on GitHub"
 
-[136]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L180-L229 "Source code on GitHub"
+[136]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/migrations.js#L124-L130 "Source code on GitHub"
 
-[137]: #migrationlifecyclefunctions
+[137]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/migrations.js#L132-L138 "Source code on GitHub"
 
-[138]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L237-L251 "Source code on GitHub"
+[138]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error
 
-[139]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L265-L384 "Source code on GitHub"
+[139]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/migrations.js#L140-L148 "Source code on GitHub"
 
-[140]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L272-L272 "Source code on GitHub"
+[140]: #onbootstraplifecyclefunction
 
-[141]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L335-L335 "Source code on GitHub"
+[141]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined
 
-[142]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/migrations.js#L392-L402 "Source code on GitHub"
+[142]: #beforealllifecyclefunction
 
-[143]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/command-export.js#L23-L68 "Source code on GitHub"
+[143]: #beforeeachlifecyclefunction
 
-[144]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/command-export.js#L181-L253 "Source code on GitHub"
+[144]: #afteralllifecyclefunction
 
-[145]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/command-instance.js#L12-L15 "Source code on GitHub"
+[145]: #onfailurelifecyclefunction
 
-[146]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/code.js#L11-L15 "Source code on GitHub"
+[146]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/migrations.js#L156-L175 "Source code on GitHub"
 
-[147]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/code.js#L22-L36 "Source code on GitHub"
+[147]: #toolkitinstancestate
 
-[148]: #cartridgemapping
+[148]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/migrations.js#L184-L244 "Source code on GitHub"
 
-[149]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/code.js#L44-L62 "Source code on GitHub"
+[149]: #migrationlifecyclefunctions
 
-[150]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/code.js#L72-L102 "Source code on GitHub"
+[150]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/migrations.js#L252-L266 "Source code on GitHub"
 
-[151]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/command-tail.js#L7-L11 "Source code on GitHub"
+[151]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/migrations.js#L281-L408 "Source code on GitHub"
 
-[152]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/command-tail.js#L19-L42 "Source code on GitHub"
+[152]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/migrations.js#L288-L288 "Source code on GitHub"
 
-[153]: #logfile
+[153]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/migrations.js#L359-L359 "Source code on GitHub"
 
-[154]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/command-tail.js#L49-L104 "Source code on GitHub"
+[154]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/migrations.js#L416-L426 "Source code on GitHub"
 
-[155]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/jobs.js#L6-L6 "Source code on GitHub"
+[155]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/command-export.js#L23-L68 "Source code on GitHub"
 
-[156]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/jobs.js#L24-L49 "Source code on GitHub"
+[156]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/command-export.js#L173-L178 "Source code on GitHub"
 
-[157]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/jobs.js#L59-L102 "Source code on GitHub"
+[157]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/command-export.js#L186-L245 "Source code on GitHub"
 
-[158]: https://nodejs.org/api/buffer.html
+[158]: #collectionlists
 
-[159]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/jobs.js#L104-L135 "Source code on GitHub"
+[159]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/command-export.js#L254-L336 "Source code on GitHub"
 
-[160]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/jobs.js#L137-L163 "Source code on GitHub"
+[160]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/command-instance.js#L12-L15 "Source code on GitHub"
 
-[161]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/jobs.js#L165-L176 "Source code on GitHub"
+[161]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/command-tail.js#L7-L11 "Source code on GitHub"
 
-[162]: #exportsitesconfiguration
+[162]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/command-tail.js#L19-L42 "Source code on GitHub"
 
-[163]: #exportglobaldataconfiguration
+[163]: #logfile
 
-[164]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/jobs.js#L186-L205 "Source code on GitHub"
+[164]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/command-tail.js#L49-L104 "Source code on GitHub"
 
-[165]: #exportdataunitsconfiguration
+[165]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/jobs.js#L6-L6 "Source code on GitHub"
 
-[166]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/jobs.js#L221-L235 "Source code on GitHub"
+[166]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/jobs.js#L24-L53 "Source code on GitHub"
 
-[167]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map
+[167]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/jobs.js#L55-L59 "Source code on GitHub"
 
-[168]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/jobs.js#L244-L265 "Source code on GitHub"
+[168]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/jobs.js#L61-L66 "Source code on GitHub"
 
-[169]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/jobs.js#L279-L296 "Source code on GitHub"
+[169]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/jobs.js#L75-L80 "Source code on GitHub"
 
-[170]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/jobs.js#L305-L318 "Source code on GitHub"
+[170]: #jobexecutionparameter
 
-[171]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/jobs.js#L320-L327 "Source code on GitHub"
+[171]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/jobs.js#L92-L143 "Source code on GitHub"
 
-[172]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/jobs.js#L329-L333 "Source code on GitHub"
+[172]: https://nodejs.org/api/buffer.html
 
-[173]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/jobs.js#L341-L348 "Source code on GitHub"
+[173]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/jobs.js#L145-L176 "Source code on GitHub"
 
-[174]: #resourcedocument
+[174]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/jobs.js#L178-L204 "Source code on GitHub"
 
-[175]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/jobs.js#L365-L418 "Source code on GitHub"
+[175]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/jobs.js#L206-L217 "Source code on GitHub"
 
-[176]: #permissionvalidatorcallback
+[176]: #exportsitesconfiguration
 
-[177]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/31dbac333c580261644e05e9248ae94a004d818b/lib/util.js#L7-L9 "Source code on GitHub"
+[177]: #exportglobaldataconfiguration
+
+[178]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/jobs.js#L227-L246 "Source code on GitHub"
+
+[179]: #exportdataunitsconfiguration
+
+[180]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/jobs.js#L262-L276 "Source code on GitHub"
+
+[181]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map
+
+[182]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/jobs.js#L285-L308 "Source code on GitHub"
+
+[183]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/jobs.js#L322-L339 "Source code on GitHub"
+
+[184]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/jobs.js#L348-L363 "Source code on GitHub"
+
+[185]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/jobs.js#L365-L372 "Source code on GitHub"
+
+[186]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/jobs.js#L374-L378 "Source code on GitHub"
+
+[187]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/jobs.js#L386-L393 "Source code on GitHub"
+
+[188]: #resourcedocument
+
+[189]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/jobs.js#L411-L464 "Source code on GitHub"
+
+[190]: #permissionvalidatorcallback
+
+[191]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/util.js#L7-L9 "Source code on GitHub"
+
+[192]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/code.js#L11-L15 "Source code on GitHub"
+
+[193]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/code.js#L22-L36 "Source code on GitHub"
+
+[194]: #cartridgemapping
+
+[195]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/code.js#L44-L62 "Source code on GitHub"
+
+[196]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/code.js#L72-L102 "Source code on GitHub"
+
+[197]: https://github.com/SalesforceCommerceCloud/b2c-tools/blob/9a518b45295aef93c441cf44b2eb87bd29ace8f3/lib/code.js#L110-L123 "Source code on GitHub"
+
