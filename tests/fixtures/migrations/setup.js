@@ -1,6 +1,6 @@
 module.exports = {
     /**
-     * Runs after migration self-bootstrapping, on tool metadata upgrades or when `--force-boostrap` is
+     * Runs after migration self-bootstrapping, on tool metadata upgrades or when `--force-bootstrap` is
      * specified. Projects can use this to provide additional setup, permissions or custom functionality
      * required by migration scripts or lifecycle methods.
      *

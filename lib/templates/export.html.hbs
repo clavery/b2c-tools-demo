@@ -18,6 +18,13 @@
         <h1>Data Export</h1>
         <h2>{{env.server}}</h2>
 
+        <p>
+            Jump to Site:
+            {{#each sites}}
+                <a href="#sites|{{this}}|all">{{this}}</a>
+                {{#unless @last}} | {{/unless}}
+            {{/each}}
+        </p>
         <p>Select the items to export</p>
 
         <div style="margin-left: 40px; margin-bottom: 20px;">
@@ -76,7 +83,15 @@
             </li>
             <li><input type="checkbox" name="libraries|all" id="libraries|all"/> <label for="libraries|all">Libraries</label></li>
             <li><input type="checkbox" name="library_static_resources|all" id="library_static_resources|all"/> <label for="library_static_resources|all">Library Static Resources</label></li>
-            <li><input type="checkbox" name="inventory_lists|all" id="inventory_lists|all"/> <label for="inventory_lists|all">Inventory Lists</label></li>
+            <li><input type="checkbox" name="inventory_lists|all" id="inventory_lists|all"/> <label for="inventory_lists|all">Inventory Lists</label>
+                <ul class="submenu">
+                    {{#each inventoryLists}}
+                        <li>
+                            <input type="checkbox" name="inventory_lists|{{this}}" id="inventory_lists|{{this}}"/> <label for="inventory_lists|{{this}}">{{this}}</label>
+                        </li>
+                    {{/each}}
+                </ul>
+            </li>
             <li><input type="checkbox" name="customer_lists|all" id="customer_lists|all"/> <label for="customer_lists|all">Customer Lists</label></li>
             <li><input type="checkbox" name="price_books|all" id="price_books|all"/> <label for="price_books|all">Price Books</label></li>
 

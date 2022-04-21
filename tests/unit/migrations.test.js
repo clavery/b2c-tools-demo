@@ -30,6 +30,9 @@ beforeAll(() => {
             })]
         ])
     })
+});
+beforeEach(() => {
+    jest.clearAllMocks();
     Environment.mockImplementation((opts) => {
         return Object.assign(opts, {
             ocapi: {
@@ -37,7 +40,8 @@ beforeAll(() => {
                     return {
                         data: {
                             c_b2cToolkitDataVersion:  B2C_TOOLKIT_DATA_VERSION,
-                            c_b2cToolkitMigrations: ""
+                            c_b2cToolkitMigrations: "",
+                            c_b2cToolsBootstrappedClientIDs: "1234"
                         }
                     }
                 }),
@@ -47,9 +51,8 @@ beforeAll(() => {
             },
         });
     });
-});
-beforeEach(() => {
-    jest.clearAllMocks();
+    siteArchiveImport.mockImplementation(() => {
+    });
     env = new Environment({
         'server': 'example.com',
         'clientID': '1234'
@@ -57,7 +60,7 @@ beforeEach(() => {
 });
 
 test('should import impex directories', async () => {
-    await migrateInstance(env, MIGRATIONS_DIR, ['^ignore.*'], true)
+    await migrateInstance(env, MIGRATIONS_DIR, ['^ignore.*', "^_.*"], true)
     // 3 directory migrations
     expect(siteArchiveImport).toHaveBeenCalledTimes(3);
     expect(nullScriptMigration).toHaveBeenCalledTimes(1);
@@ -65,17 +68,17 @@ test('should import impex directories', async () => {
 })
 
 test('should not write preferences if not applying', async () => {
-    await migrateInstance(env, MIGRATIONS_DIR, ['^ignore.*'], false)
+    await migrateInstance(env, MIGRATIONS_DIR, ['^ignore.*', "^_.*"], false)
     expect(env.ocapi.patch).toHaveBeenCalledTimes(0);
 })
 
 test('should not import on dry run', async () => {
-    await migrateInstance(env, MIGRATIONS_DIR, ['^ignore.*'], true, true)
+    await migrateInstance(env, MIGRATIONS_DIR, ['^ignore.*', "^_.*"], true, true)
     expect(siteArchiveImport).toHaveBeenCalledTimes(0);
 })
 
 test('lifecycle methods', async () => {
-    await migrateInstance(env, MIGRATIONS_DIR, ['^ignore.*'], true)
+    await migrateInstance(env, MIGRATIONS_DIR, ['^ignore.*', "^_.*"], true)
 
     // no bootstrap under normal run
     expect(setupFixture.onBootstrap).toHaveBeenCalledTimes(0);
@@ -98,12 +101,13 @@ test('should bootstrap when missing preferences', async () => {
             ocapi: {
                 get: jest.fn(async (url) => {
                     getCalls++;
-                    // return correct response after boostrap
+                    // return correct response after bootstrap
                     if (url === '/global_preferences/preference_groups/b2cToolkit/development' && getCalls >= 2) {
                         return {
                             data: {
                                 c_b2cToolkitDataVersion: B2C_TOOLKIT_DATA_VERSION,
-                                c_b2cToolkitMigrations: ""
+                                c_b2cToolkitMigrations: "",
+                                c_b2cToolsBootstrappedClientIDs: "1234"
                             }
                         }
                     } else {
@@ -122,7 +126,7 @@ test('should bootstrap when missing preferences', async () => {
         'server': 'example.com',
         'clientID': '1234'
     });
-    await migrateInstance(env, MIGRATIONS_DIR, ['^ignore.*'], true, true)
+    await migrateInstance(env, MIGRATIONS_DIR, ['^ignore.*', "^_.*"], true, true)
     // import preferences but no migrations (dry-run)
     expect(siteArchiveImport).toHaveBeenCalledTimes(1);
     expect(setupFixture.onBootstrap).toHaveBeenCalledTimes(1);
@@ -130,9 +134,12 @@ test('should bootstrap when missing preferences', async () => {
 
 test('should call onFailure on failed import and continue if no exception', async () => {
     siteArchiveImport.mockImplementation(() => {
-        throw "Error"
+        throw "Testing"
     });
-    await migrateInstance(env, MIGRATIONS_DIR, ['^ignore.*'], true)
+    setupFixture.onFailure.mockImplementation(() => {
+        return true;
+    })
+    await migrateInstance(env, MIGRATIONS_DIR, ['^ignore.*', "^_.*"], true)
     expect(siteArchiveImport).toHaveBeenCalledTimes(3);
     expect(setupFixture.onFailure).toHaveBeenCalledTimes(3);
 })
@@ -142,18 +149,27 @@ test('should call onFailure on failed import and reject', async () => {
         throw "Error"
     });
     setupFixture.onFailure.mockImplementation(() => {
-        throw "Error"
+        throw "Error2"
     })
     await expect(async () => {
-        await migrateInstance(env, MIGRATIONS_DIR, ['^ignore.*'], true)
+        await migrateInstance(env, MIGRATIONS_DIR, ['^ignore.*', "^_.*"], true)
     }).rejects
 })
 
-test('should skip migraiton on beforeEach returning false', async () => {
+test('should skip migration on beforeEach returning false', async () => {
     setupFixture.beforeEach.mockImplementation(() => {
         return false;
     })
-    await migrateInstance(env, MIGRATIONS_DIR, ['^ignore.*'], true);
+    await migrateInstance(env, MIGRATIONS_DIR, ['^ignore.*', "^_.*"], true);
     expect(setupFixture.beforeEach).toHaveBeenCalledTimes(4);
     expect(siteArchiveImport).toHaveBeenCalledTimes(0);
+})
+
+test('should bootstrap if clientID is not recorded', async () => {
+    env = new Environment({
+        'server': 'example.com',
+        'clientID': '9876'
+    });
+    await migrateInstance(env, MIGRATIONS_DIR, ['^ignore.*', "^_.*"], true, true);
+    expect(setupFixture.onBootstrap).toHaveBeenCalledTimes(1);
 })
